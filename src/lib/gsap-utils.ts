@@ -6,9 +6,23 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+interface AnimationOptions {
+  delay?: number;
+  duration?: number;
+  ease?: string;
+  y?: number;
+  x?: number;
+  scale?: number;
+  opacity?: number;
+  stagger?: number;
+  yoyo?: boolean;
+  repeat?: number;
+  onUpdate?: () => void;
+}
+
 export const animations = {
   // Fade in animation
-  fadeIn: (element: string | Element, options: any = {}) => {
+  fadeIn: (element: string | Element, options: AnimationOptions = {}) => {
     return gsap.fromTo(element, 
       { opacity: 0, y: 20 },
       { 
@@ -22,7 +36,7 @@ export const animations = {
   },
 
   // Scale in animation
-  scaleIn: (element: string | Element, options: any = {}) => {
+  scaleIn: (element: string | Element, options: AnimationOptions = {}) => {
     return gsap.fromTo(element,
       { scale: 0.8, opacity: 0 },
       {
@@ -36,7 +50,7 @@ export const animations = {
   },
 
   // Slide in from left
-  slideInLeft: (element: string | Element, options: any = {}) => {
+  slideInLeft: (element: string | Element, options: AnimationOptions = {}) => {
     return gsap.fromTo(element,
       { x: -100, opacity: 0 },
       {
@@ -50,7 +64,7 @@ export const animations = {
   },
 
   // Slide in from right
-  slideInRight: (element: string | Element, options: any = {}) => {
+  slideInRight: (element: string | Element, options: AnimationOptions = {}) => {
     return gsap.fromTo(element,
       { x: 100, opacity: 0 },
       {
@@ -78,7 +92,7 @@ export const animations = {
   },
 
   // Stagger animation for multiple elements
-  staggerIn: (elements: string | NodeList, options: any = {}) => {
+  staggerIn: (elements: string | NodeList, options: AnimationOptions = {}) => {
     return gsap.fromTo(elements,
       { y: 30, opacity: 0 },
       {
@@ -93,7 +107,7 @@ export const animations = {
   },
 
   // Float animation for continuous movement
-  float: (element: string | Element, options: any = {}) => {
+  float: (element: string | Element, options: AnimationOptions = {}) => {
     return gsap.to(element, {
       y: -10,
       duration: 2,
@@ -105,7 +119,7 @@ export const animations = {
   },
 
   // Counter animation for numbers
-  countUp: (element: string | Element, endValue: number, options: any = {}) => {
+  countUp: (element: string | Element, endValue: number, options: AnimationOptions = {}) => {
     const el = typeof element === 'string' ? document.querySelector(element) : element;
     if (!el) return;
 
@@ -154,12 +168,12 @@ export const animations = {
 };
 
 // Timeline helpers
-export const createTimeline = (options: any = {}) => {
+export const createTimeline = (options: { delay?: number; duration?: number } = {}) => {
   return gsap.timeline(options);
 };
 
 // Scroll trigger helper
-export const createScrollTrigger = (element: string | Element, animation: any, options: any = {}) => {
+export const createScrollTrigger = (element: string | Element, animation: AnimationOptions, options: { trigger?: string | Element; start?: string; end?: string; toggleActions?: string } = {}) => {
   return gsap.to(element, {
     ...animation,
     scrollTrigger: {

@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { SearchIcon } from '@/components/ui/search-icon';
 import { animations } from '@/lib/gsap-utils';
@@ -39,16 +41,15 @@ export default function Navbar() {
       <div className="flex items-center justify-between w-full">
         {/* Logo Placeholder */}
         <div className="flex items-center">
-          <a href="/" className="flex items-center">
-            <img 
+          <Link href="/" className="flex items-center">
+            <Image 
               src="/logo.png" 
               alt="Logo" 
+              width={144}
+              height={144}
               className="w-36 h-36 object-contain"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-              }}
             />
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Menu */}
@@ -79,15 +80,15 @@ export default function Navbar() {
             size="default"
             className="bg-primer hover:bg-primer/90 text-white flex items-center space-x-2 px-6 py-5 rounded-full group"
             onMouseEnter={(e) => {
-              const icon = e.currentTarget.querySelector('[data-search-icon]');
-              if (icon) {
-                (icon as any).startAnimation?.();
+              const icon = e.currentTarget.querySelector('[data-search-icon]') as HTMLElement;
+              if (icon && 'startAnimation' in icon) {
+                (icon as { startAnimation?: () => void }).startAnimation?.();
               }
             }}
             onMouseLeave={(e) => {
-              const icon = e.currentTarget.querySelector('[data-search-icon]');
-              if (icon) {
-                (icon as any).stopAnimation?.();
+              const icon = e.currentTarget.querySelector('[data-search-icon]') as HTMLElement;
+              if (icon && 'stopAnimation' in icon) {
+                (icon as { stopAnimation?: () => void }).stopAnimation?.();
               }
             }}
           >
