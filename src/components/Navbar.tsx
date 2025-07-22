@@ -1,17 +1,25 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { SearchIcon } from '@/components/ui/search-icon';
 import { animations } from '@/lib/gsap-utils';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    // Register ScrollTrigger plugin
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -21,8 +29,36 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    // Animate navbar on mount
-    animations.fadeIn('.navbar', { delay: 0.2 });
+
+    if (navRef.current) {
+      const navbar = navRef.current;
+      
+      // Create scroll trigger for hiding/showing navbar
+      ScrollTrigger.create({
+        start: "top -100",
+        end: 99999,
+        onUpdate: (self) => {
+          if (self.direction === 1) {
+            // Scrolling down - hide navbar (move up off-screen)
+            gsap.to(navbar, {
+              y: -120,
+              duration: 0.2,
+            });
+          } else {
+            // Scrolling up - show navbar (move down to original position)
+            gsap.to(navbar, {
+              y: 0,
+              duration: 0.2,
+            });
+          }
+        }
+      });
+    }
+
+    // Cleanup ScrollTrigger on unmount
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   const menuItems = [
@@ -34,18 +70,19 @@ export default function Navbar() {
   return (
     <>
       <nav 
+        ref={navRef}
         className={`navbar fixed top-2 md:top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'bg-white/90 backdrop-blur-md shadow-lg' 
-            : 'bg-white/80 backdrop-blur-sm'
-        } rounded-full px-4 md:px-8 lg:px-12 h-16 md:h-20 mx-2 md:mx-4 w-[calc(100%-16px)] md:w-[1000px] max-w-[95vw] flex items-center`}
+            ? 'bg-black backdrop-blur-md shadow-lg' 
+            : 'bg-black backdrop-blur-sm'
+        } rounded-full px-4 md:px-8 lg:px-12 h-10 md:h-20 mx-2 md:mx-4 w-[calc(100%-16px)] md:w-[1000px] max-w-[95vw] flex items-center`}
       >
         <div className="flex items-center justify-between w-full">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center -ml-4">
             <Link href="/" className="flex items-center">
               <Image 
-                src="/logo.png" 
+                src="/logo-white.png" 
                 alt="Logo" 
                 width={144}
                 height={144}
@@ -60,7 +97,7 @@ export default function Navbar() {
               <a
                 key={item.label}
                 href={item.href}
-                className="nav-item text-gray-600 hover:text-primer transition-colors duration-200 font-medium"
+                className="nav-item text-white hover:text-primer transition-colors duration-200 font-medium"
                 onClick={() => animations.buttonPress(`.nav-item:nth-child(${index + 1})`)}
               >
                 {item.label}
@@ -69,18 +106,18 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Buttons */}
-          <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
+          <div className="hidden md:flex items-center space-x-2 lg:space-x-4 -mr-6">
             <Button
               variant="ghost"
               size="default"
-              className="text-gray-600 hover:text-primer hover:bg-primer/10 px-3 lg:px-6 py-3 lg:py-5 rounded-full text-sm lg:text-base"
+              className="text-white hover:text-primer hover:bg-primer/10 px-3 lg:px-6 py-3 lg:py-5 rounded-full text-sm lg:text-base"
             >
               <span>Login</span>
             </Button>
             
             <Button
               size="default"
-              className="bg-primer hover:bg-primer/90 text-white flex items-center space-x-1 lg:space-x-2 px-3 lg:px-6 py-3 lg:py-5 rounded-full group text-sm lg:text-base"
+              className="bg-white hover:bg-gray-200 text-[#1A2F4B] flex items-center space-x-1 lg:space-x-2 px-3 lg:px-6 py-3 lg:py-5 rounded-full group text-sm lg:text-base"
               onMouseEnter={(e) => {
                 const icon = e.currentTarget.querySelector('[data-search-icon]') as HTMLElement;
                 if (icon && 'startAnimation' in icon) {
@@ -107,9 +144,9 @@ export default function Navbar() {
               aria-label="Menu"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              <span className={`block w-5 h-0.5 bg-gray-600 mb-1 transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-              <span className={`block w-5 h-0.5 bg-gray-600 mb-1 transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-              <span className={`block w-5 h-0.5 bg-gray-600 transition-transform duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+              <span className={`block w-5 h-0.5 bg-white mb-1 transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+              <span className={`block w-5 h-0.5 bg-white mb-1 transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`block w-5 h-0.5 bg-white transition-transform duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
             </button>
           </div>
         </div>
@@ -146,7 +183,7 @@ export default function Navbar() {
                 
                 <Button
                   size="default"
-                  className="bg-primer hover:bg-primer/90 text-white flex items-center justify-center space-x-2 py-3 rounded-full w-full"
+                  className="bg-white hover:bg-primer/90 text-primer flex items-center justify-center space-x-2 py-3 rounded-full w-full"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <span>Explore Now</span>

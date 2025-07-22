@@ -5,9 +5,9 @@ import { Button } from '@/components/ui/button';
 import { FiArrowRight } from 'react-icons/fi';
 import { animations, createTimeline } from '@/lib/gsap-utils';
 import { HiOutlineCollection } from "react-icons/hi";
+import VideoDemo from './VideoDemo';
 
 export default function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,12 +21,6 @@ export default function HeroSection() {
 
   }, []);
 
-  const handleVideoLoad = () => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(console.error);
-    }
-  };
-
   return (
     <section 
       ref={heroRef}
@@ -37,6 +31,9 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-primer/5 via-transparent to-sekunder/5"></div>
       <div className="absolute top-1/4 left-4 md:left-10 w-20 h-20 md:w-32 md:h-32 bg-accent/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 right-4 md:right-10 w-32 h-32 md:w-48 md:h-48 bg-primer/10 rounded-full blur-3xl"></div>
+      
+      {/* Green bottom section */}
+      <div className="absolute bottom-0 left-0 right-0 h-[700px] bg-primer"></div>
 
       {/* Text Content */}
       <div className="max-w-4xl mx-auto relative z-10 mb-8 md:mb-16 text-center md:text-left md:ml-24">
@@ -61,8 +58,8 @@ export default function HeroSection() {
             size="lg"
             className="bg-primer hover:bg-primer/90 text-white px-6 md:px-8 py-3 text-base md:text-lg rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
           >
-            <HiOutlineCollection className="w-4 h-4 md:w-5 md:h-5 mr-2 stroke-[2px]" />
             Try Now
+            <HiOutlineCollection className="w-4 h-4 md:w-5 md:h-5 mr-2 stroke-[2px]" />
           </Button>
           
           <Button
@@ -77,29 +74,8 @@ export default function HeroSection() {
       </div>
 
       {/* Video Section */}
-      <div className="hero-video w-full max-w-6xl mx-auto relative z-10 px-4 md:px-0">
-        <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl bg-white border border-gray-200">
-          <video
-            ref={videoRef}
-            className="w-full h-auto"
-            autoPlay
-            muted
-            loop
-            playsInline
-            onLoadedData={handleVideoLoad}
-          >
-            <source src="https://cdn.cargovision.app/video.mp4" type="video/mp4" />
-            <div className="flex items-center justify-center h-48 md:h-64 bg-gray-100 text-gray-500">
-              <div className="text-center">
-                <HiOutlineCollection className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 text-primer stroke-2" />
-                <p className="text-sm md:text-base">Video could not be loaded</p>
-              </div>
-            </div>
-          </video>
-          
-          {/* Video Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none"></div>
-        </div>
+      <div className="hero-video w-full mx-auto relative z-10 px-8 md:px-8">
+        <VideoDemo />
       </div>
     </section>
   );
