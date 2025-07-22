@@ -19,8 +19,6 @@ export default function HeroSection() {
       .add(animations.fadeIn('.hero-buttons', { duration: 0.6 }), '-=0.3')
       .add(animations.scaleIn('.hero-video', { duration: 1 }), '-=0.4');
 
-
-
   }, []);
 
   const handleVideoLoad = () => {
@@ -33,55 +31,54 @@ export default function HeroSection() {
     <section 
       ref={heroRef}
       id="home" 
-      className="min-h-screen flex flex-col items-center justify-center px-8 pt-32 pb-20 bg-white relative overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 pt-24 md:pt-32 pb-12 md:pb-20 bg-white relative overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-primer/5 via-transparent to-sekunder/5"></div>
-      <div className="absolute top-1/4 left-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-10 w-48 h-48 bg-primer/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/4 left-4 md:left-10 w-20 h-20 md:w-32 md:h-32 bg-accent/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-4 md:right-10 w-32 h-32 md:w-48 md:h-48 bg-primer/10 rounded-full blur-3xl"></div>
 
-      {/* Text Content - Left Aligned with Margin */}
-      <div className="max-w-4xl mx-auto relative z-10 mb-16 ml-24">
+      {/* Text Content */}
+      <div className="max-w-4xl mx-auto relative z-10 mb-8 md:mb-16 text-center md:text-left md:ml-24">
         {/* Headline */}
-        <h1 className="hero-headline text-4xl md:text-6xl lg:text-7xl font-medium font-nohemi text-gray-900 mb-8 leading-tight text-left">
+        <h1 className="hero-headline text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-medium font-nohemi text-gray-900 mb-6 md:mb-8 leading-tight">
           <span className="block">AI-Powered</span>
           <span className="block text-primer">Anti-Money Laundering</span>
-          <span className="block text-sm md:text-lg lg:text-xl font-medium text-gray-600 mt-4">
+          <span className="block text-sm sm:text-base md:text-lg lg:text-xl font-medium text-gray-600 mt-2 md:mt-4">
             for Decentralized Exchanges
           </span>
         </h1>
 
         {/* Description */}
-        <p className="hero-description text-lg md:text-xl text-gray-700 mb-12 leading-relaxed text-left max-w-[800px]">
+        <p className="hero-description text-base sm:text-lg md:text-xl text-gray-700 mb-8 md:mb-12 leading-relaxed max-w-[90%] sm:max-w-[800px] mx-auto md:mx-0">
           Dextektif is an AI-driven solution designed to detect, monitor, and prevent money laundering 
           activities in memecoin trading on Solana-based decentralized exchanges like Jupiter, Raydium, and Pump Fun.
         </p>
 
         {/* Buttons */}
-        <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-start items-start">
+        <div className="hero-buttons flex flex-col sm:flex-row gap-3 md:gap-4 justify-center md:justify-start items-center md:items-start">
           <Button
             size="lg"
-            className="bg-primer hover:bg-primer/90 text-white px-8 py-3 text-lg rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            className="bg-primer hover:bg-primer/90 text-white px-6 md:px-8 py-3 text-base md:text-lg rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
           >
-           
+            <HiOutlineCollection className="w-4 h-4 md:w-5 md:h-5 mr-2 stroke-[2px]" />
             Try Now
-            <HiOutlineCollection className="w-5 h-5 mr-2 stroke-[2px]" />
           </Button>
           
           <Button
             variant="ghost"
             size="lg"
-            className="text-primer hover:bg-gray-200 px-8 py-3 text-lg font-semibold group rounded-full"
+            className="text-primer hover:bg-gray-200 px-6 md:px-8 py-3 text-base md:text-lg font-semibold group rounded-full w-full sm:w-auto"
           >
             Learn More
-            <FiArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+            <FiArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
           </Button>
         </div>
       </div>
 
-      {/* Video Section - Full Width */}
-      <div className="hero-video w-full relative z-10">
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white border border-gray-200">
+      {/* Video Section */}
+      <div className="hero-video w-full max-w-6xl mx-auto relative z-10 px-4 md:px-0">
+        <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl bg-white border border-gray-200">
           <video
             ref={videoRef}
             className="w-full h-auto"
@@ -92,10 +89,10 @@ export default function HeroSection() {
             onLoadedData={handleVideoLoad}
           >
             <source src="https://cdn.cargovision.app/video.mp4" type="video/mp4" />
-            <div className="flex items-center justify-center h-64 bg-gray-100 text-gray-500">
+            <div className="flex items-center justify-center h-48 md:h-64 bg-gray-100 text-gray-500">
               <div className="text-center">
-                                 <HiOutlineCollection className="w-16 h-16 mx-auto mb-4 text-primer stroke-2" />
-                <p>Video could not be loaded</p>
+                <HiOutlineCollection className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 text-primer stroke-2" />
+                <p className="text-sm md:text-base">Video could not be loaded</p>
               </div>
             </div>
           </video>
@@ -103,11 +100,7 @@ export default function HeroSection() {
           {/* Video Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none"></div>
         </div>
-        
-
       </div>
-
-
     </section>
   );
 } 
