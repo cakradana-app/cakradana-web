@@ -32,55 +32,10 @@ export default function VideoDemo({ className = "" }: VideoDemoProps) {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Force initial scale to 1 immediately
     const container = containerRef.current;
     gsap.set(container, { scale: 1, transformOrigin: "center center" });
 
-    // Use Intersection Observer for more reliable detection
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const rect = entry.boundingClientRect;
-            const windowHeight = window.innerHeight;
-            
-            // Calculate how centered the element is in viewport
-            const elementCenter = rect.top + rect.height / 2;
-            const viewportCenter = windowHeight / 2;
-            const maxDistance = windowHeight / 2;
-            
-            // Distance from center (0 = centered, 1 = at edge)
-            const distanceFromCenter = Math.abs(elementCenter - viewportCenter) / maxDistance;
-            
-            // Smooth scaling: closer to center = larger scale
-            const normalizedDistance = Math.max(0, Math.min(1, distanceFromCenter));
-            const scaleValue = 1 + (0.3 * (1 - normalizedDistance));
-            
-            gsap.to(container, {
-              scale: scaleValue,
-              duration: 0.3,
-              ease: "power2.out",
-              transformOrigin: "center center"
-            });
-          } else {
-            // Reset to normal size when not intersecting
-            gsap.to(container, {
-              scale: 1,
-              duration: 0.3,
-              ease: "power2.out"
-            });
-          }
-        });
-      },
-      {
-        threshold: Array.from({ length: 101 }, (_, i) => i / 100), // 0 to 1 in 0.01 steps
-        rootMargin: '-10% 0px -10% 0px'
-      }
-    );
-
-    observer.observe(container);
-
-    // Additional scroll listener for smooth updates
+    // Single scroll listener for smooth scaling
     const handleScroll = () => {
       if (!container) return;
       
@@ -95,12 +50,15 @@ export default function VideoDemo({ className = "" }: VideoDemoProps) {
         
         const distanceFromCenter = Math.abs(elementCenter - viewportCenter) / maxDistance;
         const normalizedDistance = Math.max(0, Math.min(1, distanceFromCenter));
-        const scaleValue = 1 + (0.3 * (1 - normalizedDistance));
+        const scaleValue = 1 + (0.10 * (1 - normalizedDistance));
         
         gsap.set(container, {
           scale: scaleValue,
           transformOrigin: "center center"
         });
+      } else {
+        // Reset to normal size when not visible
+        gsap.set(container, { scale: 1 });
       }
     };
 
@@ -116,13 +74,15 @@ export default function VideoDemo({ className = "" }: VideoDemoProps) {
       }
     };
 
+    // Initial call
+    handleScroll();
+    
     window.addEventListener('scroll', throttledScroll, { passive: true });
 
     // Cleanup
     return () => {
-      observer.disconnect();
       window.removeEventListener('scroll', throttledScroll);
-      gsap.set(container, { scale: 1 }); // Ensure cleanup
+      gsap.set(container, { scale: 1 });
     };
   }, []);
 

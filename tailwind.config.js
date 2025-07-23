@@ -13,7 +13,7 @@ module.exports = {
         primer: '#005655',
         sekunder: '#00c71e',
         accent: '#c9f001',
-        background: '#ffffde',
+        background: '#ffffff',
         // Default shadcn colors
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

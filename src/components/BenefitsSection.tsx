@@ -58,7 +58,7 @@ export default function BenefitsSection() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     
-    let scrollTrigger: any;
+    let scrollTrigger: ScrollTrigger | null = null;
     
     // Dynamic import for client-side only
     const initAnimation = async () => {

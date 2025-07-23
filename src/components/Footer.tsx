@@ -218,7 +218,7 @@ export default function Footer() {
               {/* Back to top */}
               <button
                 onClick={scrollToTop}
-                className="w-12 h-12 rounded-xl bg-primer/10 backdrop-blur-sm border border-primer/20 flex items-center justify-center text-primer hover:bg-primer hover:text-white hover:scale-105 transition-all duration-200 group"
+                className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-primer hover:scale-105 transition-all duration-200 group"
                 aria-label="Back to top"
               >
                 <ArrowUp className="w-5 h-5 group-hover:animate-bounce" />

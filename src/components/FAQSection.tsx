@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { animations, createTimeline } from '@/lib/gsap-utils';
+import { createScrollTrigger } from '@/lib/gsap-utils';
 import { HelpCircle, ArrowRight, CircleQuestionMark } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
@@ -39,12 +39,53 @@ export default function FAQSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const tl = createTimeline({ delay: 0.3 });
-    
-    tl.add(animations.fadeIn('.faq-headline', { duration: 1 }))
-      .add(animations.fadeIn('.faq-description', { duration: 0.8 }), '-=0.5')
-      .add(animations.staggerIn('.faq-item', { duration: 0.6, stagger: 0.1 }), '-=0.3');
+    // Scroll-triggered animations that wait for viewport (following FeaturesSection pattern)
+    if (typeof window !== 'undefined') {
+      // Animate FAQ header when it comes into view (20% from top)
+      createScrollTrigger('.faq-header', 
+        { 
+          opacity: 1, 
+          y: 0,
+          duration: 1.2,
+          delay: 0.2,
+          ease: "power2.out"
+        },
+        {
+          start: "top 80%", // Triggers when top of element is 80% down the viewport (20% visible)
+          toggleActions: "play none none reverse"
+        }
+      );
 
+      // Animate support section
+      createScrollTrigger('.faq-support', 
+        { 
+          opacity: 1, 
+          y: 0,
+          duration: 1,
+          delay: 0.6,
+          ease: "power2.out"
+        },
+        {
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      );
+
+      // Animate accordion
+      createScrollTrigger('.faq-accordion', 
+        { 
+          opacity: 1, 
+          y: 0,
+          duration: 1,
+          delay: 1.0,
+          ease: "power2.out"
+        },
+        {
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      );
+    }
   }, []);
 
   return (
@@ -61,7 +102,7 @@ export default function FAQSection() {
           {/* Left Column - Intro and Support */}
           <div className="space-y-8">
             {/* Header */}
-            <div className="space-y-4">
+            <div className="faq-header space-y-4">
               <div className="flex mb-4">
                 <Badge className='bg-primer/10 text-primer border-primer/20'>
                   <CircleQuestionMark className="-ms-0.5 opacity-60" size={12} aria-hidden="true" />
@@ -77,7 +118,7 @@ export default function FAQSection() {
             </div>
 
             {/* Support Section */}
-            <div className="space-y-4 pt-4">
+            <div className="faq-support space-y-4">
               <div className="flex items-center gap-2">
                 <HelpCircle className="w-5 h-5 text-gray-700" />
                 <p className="text-gray-700 font-medium">Need further support?</p>
@@ -90,7 +131,7 @@ export default function FAQSection() {
           </div>
 
           {/* Right Column - FAQ Accordion */}
-          <div className="faq-item">
+          <div className="faq-accordion">
             <Accordion
               type="single"
               collapsible

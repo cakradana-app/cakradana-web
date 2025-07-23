@@ -167,7 +167,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ testimonial }) => {
           </div>
 
           <p className="text-gray-700 text-base leading-relaxed mb-6 whitespace-normal">
-            "{highlightKeyword(testimonial.testimonial)}"
+            &ldquo;{highlightKeyword(testimonial.testimonial)}&rdquo;
           </p>
         </div>
 

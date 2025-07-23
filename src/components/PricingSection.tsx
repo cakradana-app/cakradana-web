@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { animations, createTimeline } from '@/lib/gsap-utils';
+import { animations, createScrollTrigger } from '@/lib/gsap-utils';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Check, Star, Banknote } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -63,12 +65,47 @@ export default function PricingSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const tl = createTimeline({ delay: 0.3 });
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Set initial state for all pricing cards
+    gsap.set('.pricing-card', { 
+      opacity: 0, 
+      y: 80, 
+      scale: 0.9,
+      transformOrigin: "center center"
+    });
+
+    // Create timeline for pricing animations
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 85%", // Trigger when section is 15% into viewport
+        end: "bottom 20%", // End when section bottom is 20% from top
+        toggleActions: "play none none reverse"
+      }
+    });
     
+    // Animate header elements first
     tl.add(animations.fadeIn('.pricing-headline', { duration: 1 }))
       .add(animations.fadeIn('.pricing-description', { duration: 0.8 }), '-=0.5')
-      .add(animations.staggerIn('.pricing-card', { duration: 0.6, stagger: 0.2 }), '-=0.3');
+      // Animate all pricing cards with stagger
+      .to('.pricing-card', {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        stagger: {
+          amount: 0.6, // Total stagger duration
+          ease: "power2.out"
+        },
+        ease: "back.out(1.2)"
+      }, '-=0.3');
 
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
@@ -102,7 +139,7 @@ export default function PricingSection() {
           {plans.map((plan, index) => (
             <Card 
               key={index}
-              className={`pricing-card relative hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm ${
+              className={`pricing-card relative hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm flex flex-col ${
                 plan.popular ? 'ring-2 ring-primer/20 scale-105' : ''
               }`}
             >
@@ -125,8 +162,8 @@ export default function PricingSection() {
                 </div>
               </CardHeader>
 
-              <CardContent>
-                <div className="space-y-4 mb-8">
+              <CardContent className="flex-grow flex flex-col">
+                <div className="space-y-4 mb-8 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center">
                       <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
