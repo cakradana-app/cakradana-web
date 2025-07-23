@@ -8,7 +8,7 @@ import {
   BarChart3, 
   Code,
   ArrowRight,
-  ZapIcon
+  Footprints
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -89,28 +89,35 @@ export default function HowItWorksSection() {
         <div className="how-it-works-header text-left mb-10 md:mb-12 opacity-0 translate-y-8">
           <div className="flex justify-start mb-6">
             <Badge className='bg-primer/10 text-primer border-primer/20'>
-              <ZapIcon className="-ms-0.5 text-primer" size={12} aria-hidden="true" />
-              Process
+              <Footprints className="-ms-0.5 text-primer" size={12} aria-hidden="true" />
+              Steps
             </Badge>
           </div>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold font-nohemi text-gray-900 mb-3">
-            How Dextektif Works
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium font-nohemi text-gray-900 mb-3 max-w-3xl">
+            Effortless On-Chain Analysis with Dextektif
           </h2>
-          <p className="text-sm md:text-base text-gray-600 max-w-xl leading-relaxed">
-            Simplifying on-chain analysis for AML compliance with our streamlined workflow
-          </p>
+          <div className="flex justify-between items-end">
+            <p className="text-sm md:text-base text-gray-600 max-w-xl leading-relaxed">
+              Transforming complex blockchain data into actionable compliance tools
+            </p>
+            <div className="hidden lg:block">
+              <Button variant="link" className="text-primer hover:text-primer/80 p-0 h-auto font-medium">
+                Learn more <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </div>
+          </div>
         </div>
 
         {/* Steps Timeline - Horizontal Layout */}
         <div className="steps-container relative">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
             {steps.map((step, index) => (
               <div 
                 key={index}
-                className="step-item text-left opacity-0 translate-y-8 p-6"
+                className="step-item text-left opacity-0 translate-y-8 p-6 border border-gray-200 rounded-lg bg-white"
               >
                 {/* Step Icon */}
-                <div className="mb-6">
+                <div className="mb-6 pb-4 border-b border-gray-100 -mx-6 px-6">
                   <div className={`w-16 h-16 flex items-center justify-center ${step.color}`}>
                     <step.icon className="w-9 h-9" />
                   </div>

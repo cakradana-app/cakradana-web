@@ -100,8 +100,6 @@ export default function FeaturesSection() {
       className="py-20 md:py-32 bg-primer relative overflow-hidden"
     >
       {/* Background Elements */}
-      <div className="absolute top-1/3 right-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 left-10 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         {/* Section Header */}

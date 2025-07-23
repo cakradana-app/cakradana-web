@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { animations, createTimeline } from '@/lib/gsap-utils';
-import { Check, Star } from 'lucide-react';
+import { Check, Star, Banknote } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -75,16 +75,20 @@ export default function PricingSection() {
     <section 
       ref={sectionRef}
       id="pricing" 
-      className="py-20 md:py-32 bg-gray-50 relative overflow-hidden"
+      className="py-20 md:py-32 bg-white relative overflow-hidden"
     >
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primer/5 via-transparent to-sekunder/5"></div>
-      <div className="absolute top-1/3 left-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 right-10 w-48 h-48 bg-primer/10 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 bg-white"></div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
+          <div className="flex justify-center mb-4">
+            <Badge className='bg-primer/10 text-primer border-primer/20'>
+              <Banknote className="-ms-0.5 opacity-60" size={12} aria-hidden="true" />
+              Pricing
+            </Badge>
+          </div>
           <h2 className="pricing-headline text-3xl md:text-5xl lg:text-6xl font-medium font-nohemi text-gray-900 mb-6">
             Flexible Pricing for Every Business
           </h2>
@@ -135,7 +139,7 @@ export default function PricingSection() {
                   className={`w-full ${
                     plan.popular 
                       ? 'bg-primer hover:bg-primer/90 text-white' 
-                      : 'border-2 border-primer text-primer hover:bg-primer hover:text-white'
+                      : 'border-2 border-primer text-white hover:bg-primer hover:text-white'
                   }`}
                 >
                   {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}
@@ -145,27 +149,7 @@ export default function PricingSection() {
           ))}
         </div>
 
-        {/* Additional Info */}
-        <div className="text-center mt-16 md:mt-20">
-          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
-            <CardContent className="p-8 md:p-12">
-              <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
-                Need a Custom Solution?
-              </h3>
-              <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-                We offer custom pricing and features for enterprise clients with specific requirements
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="default" size="lg">
-                  Schedule a Demo
-                </Button>
-                <Button variant="outline" size="lg">
-                  Contact Sales Team
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+
       </div>
     </section>
   );

@@ -2,35 +2,36 @@
 
 import { useEffect, useRef } from 'react';
 import { animations, createTimeline } from '@/lib/gsap-utils';
-import { HelpCircle } from 'lucide-react';
+import { HelpCircle, ArrowRight, CircleQuestionMark } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 const faqs = [
   {
-    question: "What is Dextektif?",
-    answer: "Dextektif is an AI-powered tool for detecting and preventing money laundering in crypto trading. It provides real-time monitoring, analytics, and compliance reporting for decentralized exchanges on the Solana blockchain."
+    id: "1",
+    title: "What is Dextektif?",
+    content: "Dextektif is an AI-powered solution designed to detect, monitor, and prevent money laundering activities in cryptocurrency trading. It provides real-time on-chain analysis, an interactive dashboard, and API integration to help regulators and crypto businesses ensure compliance with AML/CFT regulations."
   },
   {
-    question: "How does the API work?",
-    answer: "The API allows businesses to verify wallet addresses in real-time against a dynamic blacklist. It provides instant risk assessment and transaction monitoring capabilities with simple REST API endpoints."
+    id: "2",
+    title: "How does Dextektif help with AML compliance?",
+    content: "Dextektif simplifies AML compliance by using advanced AI and blockchain analytics to detect suspicious wallet activities, trace fund flows, and generate automated compliance reports. It ensures businesses meet OJK's AML/CFT requirements effortlessly while protecting the digital financial ecosystem."
   },
   {
-    question: "Is Dextektif compliant with Indonesian regulations?",
-    answer: "Yes, Dextektif adheres to OJK's AML/CFT guidelines and UU PDP (Personal Data Protection Law). Our system is designed to meet Indonesian regulatory requirements while ensuring data privacy."
+    id: "3",
+    title: "Can Dextektif handle Solana's high transaction throughput?",
+    content: "Yes, Dextektif is designed to process up to 50,000 transactions per second, matching Solana's high-speed blockchain capabilities. This ensures real-time monitoring and analysis without performance issues, even during peak transaction volumes."
   },
   {
-    question: "What DEXs does Dextektif support?",
-    answer: "Dextektif currently supports major Solana-based DEXs including Jupiter, Raydium, and Pump Fun. We continuously expand our coverage to include new platforms as they emerge."
+    id: "4",
+    title: "How can crypto businesses integrate Dextektif's API?",
+    content: "Crypto businesses can easily integrate Dextektif's API into their existing systems. The API allows businesses to verify wallet addresses in real-time, check risk scores, and receive blacklist updates. Integration is seamless and comes with detailed documentation and support."
   },
   {
-    question: "How accurate is the AI detection system?",
-    answer: "Our AI-powered detection system achieves 99.9% accuracy in identifying suspicious transactions and wallet activities. The system continuously learns and improves from new data patterns."
-  },
-  {
-    question: "Can I integrate Dextektif with my existing platform?",
-    answer: "Yes, Dextektif offers seamless API integration with comprehensive documentation and SDKs. Our team provides technical support to ensure smooth implementation with your existing systems."
+    id: "5",
+    title: "Is Dextektif compliant with Indonesia's data privacy regulations?",
+    content: "Absolutely. Dextektif adheres to Indonesia's Personal Data Protection Law (UU PDP) by using anonymized data processing methods. This ensures that all data is handled securely and in compliance with privacy regulations."
   }
 ];
 
@@ -53,64 +54,65 @@ export default function FAQSection() {
       className="py-20 md:py-32 bg-white relative overflow-hidden"
     >
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-sekunder/5 via-transparent to-primer/5"></div>
-      <div className="absolute top-1/4 right-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 left-10 w-48 h-48 bg-primer/10 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 bg-white"></div>
 
-      <div className="max-w-4xl mx-auto px-4 md:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16 md:mb-20">
-          <h2 className="faq-headline text-3xl md:text-5xl lg:text-6xl font-medium font-nohemi text-gray-900 mb-6">
-            Frequently Asked Questions
-          </h2>
-          <p className="faq-description text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Got questions? We've got answers. Find everything you need to know about Dextektif
-          </p>
-        </div>
+      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Left Column - Intro and Support */}
+          <div className="space-y-8">
+            {/* Header */}
+            <div className="space-y-4">
+              <div className="flex mb-4">
+                <Badge className='bg-primer/10 text-primer border-primer/20'>
+                  <CircleQuestionMark className="-ms-0.5 opacity-60" size={12} aria-hidden="true" />
+                  Explore FAQs
+                </Badge>
+              </div>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium font-nohemi text-gray-900 leading-tight">
+                Common<br />questions
+              </h2>
+              <p className="faq-description text-lg text-gray-700 leading-relaxed">
+                Find the answers to frequently asked questions here.
+              </p>
+            </div>
 
-        {/* FAQ Accordion */}
-        <Card className="faq-item bg-white/80 backdrop-blur-sm border-0 shadow-lg">
-          <CardContent className="p-0">
-            <Accordion type="single" collapsible className="w-full">
-              {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-100 last:border-b-0">
-                  <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
-                    <div className="flex items-center gap-3">
-                      <HelpCircle className="w-5 h-5 text-primer flex-shrink-0" />
-                      <span className="text-lg font-semibold text-gray-900">{faq.question}</span>
-                    </div>
+            {/* Support Section */}
+            <div className="space-y-4 pt-4">
+              <div className="flex items-center gap-2">
+                <HelpCircle className="w-5 h-5 text-gray-700" />
+                <p className="text-gray-700 font-medium">Need further support?</p>
+              </div>
+              <Button className="bg-primer hover:bg-primer/90 text-white font-medium px-6 py-3 rounded-lg flex items-center gap-2">
+                Contact us
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+
+          {/* Right Column - FAQ Accordion */}
+          <div className="faq-item">
+            <Accordion
+              type="single"
+              collapsible
+              className="w-full space-y-3"
+              defaultValue="1"
+            >
+              {faqs.map((item) => (
+                <AccordionItem
+                  value={item.id}
+                  key={item.id}
+                  className="bg-gray-50 rounded-lg border-0 px-4 py-1 outline-none"
+                >
+                  <AccordionTrigger className="py-3 text-[15px] leading-6 hover:no-underline focus-visible:ring-0 font-semibold text-gray-900">
+                    {item.title}
                   </AccordionTrigger>
-                  <AccordionContent className="px-6 pb-4">
-                    <p className="text-gray-700 leading-relaxed pl-8">
-                      {faq.answer}
-                    </p>
+                  <AccordionContent className="text-gray-700 ps-7 pb-3 leading-relaxed">
+                    {item.content}
                   </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
-          </CardContent>
-        </Card>
-
-        {/* Contact CTA */}
-        <div className="text-center mt-16 md:mt-20">
-          <Card className="bg-gradient-to-r from-primer to-sekunder border-0 text-white">
-            <CardContent className="p-8 md:p-12">
-              <h3 className="text-2xl md:text-3xl font-semibold mb-4">
-                Still Have Questions?
-              </h3>
-              <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-                Our team is here to help. Get in touch with us for personalized support and guidance
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="secondary" size="lg" className="bg-white text-primer hover:bg-gray-100">
-                  Contact Support
-                </Button>
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primer">
-                  Schedule a Call
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          </div>
         </div>
       </div>
     </section>
