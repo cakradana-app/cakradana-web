@@ -10,6 +10,7 @@ import {
   Database,
   ZapIcon
 } from 'lucide-react';
+import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -132,9 +133,15 @@ export default function FeaturesSection() {
                 </p>
               </div>
               
-              {/* Image Placeholder - Taller for top cards */}
-              <div className="w-full h-[400px] bg-white/20 rounded-xl flex items-center justify-center">
-                <span className="text-white/70 text-sm">Monitoring Dashboard</span>
+              {/* Feature Image */}
+              <div className="w-full h-[400px] bg-white/20 rounded-xl overflow-hidden">
+                <Image
+                  src="/features/Monitoring Dashboard.png"
+                  alt="Monitoring Dashboard"
+                  width={600}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </Card>
 
@@ -151,9 +158,15 @@ export default function FeaturesSection() {
                 </p>
               </div>
               
-              {/* Image Placeholder - Taller for top cards */}
-              <div className="w-full h-[400px] bg-white/20 rounded-xl flex items-center justify-center">
-                <span className="text-white/70 text-sm">Analytics Chart</span>
+              {/* Feature Image */}
+              <div className="w-full h-[400px] bg-white/20 rounded-xl overflow-hidden">
+                <Image
+                  src="/features/Analytics Chart.png"
+                  alt="Analytics Chart"
+                  width={600}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </Card>
           </div>
@@ -173,9 +186,15 @@ export default function FeaturesSection() {
                 </p>
               </div>
               
-              {/* Image Placeholder - Shorter for bottom cards */}
-              <div className="w-full h-[195px] bg-white/20 rounded-xl flex items-center justify-center">
-                <span className="text-white/70 text-sm">AI Detection</span>
+              {/* Feature Image */}
+              <div className="w-full h-[195px] bg-white/20 rounded-xl overflow-hidden">
+                <Image
+                  src="/features/AI Detection.png"
+                  alt="AI Detection"
+                  width={400}
+                  height={195}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </Card>
 
@@ -192,9 +211,15 @@ export default function FeaturesSection() {
                 </p>
               </div>
               
-              {/* Image Placeholder - Shorter for bottom cards */}
-              <div className="w-full h-[195px] bg-white/20 rounded-xl flex items-center justify-center">
-                <span className="text-white/70 text-sm">API Interface</span>
+              {/* Feature Image */}
+              <div className="w-full h-[195px] bg-white/20 rounded-xl overflow-hidden">
+                <Image
+                  src="/features/API Interface.png"
+                  alt="API Interface"
+                  width={400}
+                  height={195}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </Card>
 
@@ -211,9 +236,15 @@ export default function FeaturesSection() {
                 </p>
               </div>
               
-              {/* Image Placeholder - Shorter for bottom cards */}
-              <div className="w-full h-[195px] bg-white/20 rounded-xl flex items-center justify-center">
-                <span className="text-white/70 text-sm">Blockchain Network</span>
+              {/* Feature Image */}
+              <div className="w-full h-[195px] bg-white/20 rounded-xl overflow-hidden">
+                <Image
+                  src="/features/Blockchain Network.png"
+                  alt="Blockchain Network"
+                  width={400}
+                  height={195}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </Card>
           </div>
