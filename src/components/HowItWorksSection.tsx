@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { animations, createTimeline, createScrollTrigger } from '@/lib/gsap-utils';
+import { createScrollTrigger } from '@/lib/gsap-utils';
 import { 
   Database, 
   Cpu, 

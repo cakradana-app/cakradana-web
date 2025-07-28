@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { animations, createScrollTrigger } from '@/lib/gsap-utils';
+import { animations } from '@/lib/gsap-utils';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Check, Star, Banknote } from 'lucide-react';

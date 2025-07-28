@@ -19,12 +19,11 @@ export default function VideoDemo({ className = "" }: VideoDemoProps) {
       }
     };
 
-    if (videoRef.current) {
-      videoRef.current.addEventListener('loadeddata', handleVideoLoad);
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      videoElement.addEventListener('loadeddata', handleVideoLoad);
       return () => {
-        if (videoRef.current) {
-          videoRef.current.removeEventListener('loadeddata', handleVideoLoad);
-        }
+        videoElement.removeEventListener('loadeddata', handleVideoLoad);
       };
     }
   }, []);

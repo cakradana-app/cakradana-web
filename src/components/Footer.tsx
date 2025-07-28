@@ -11,8 +11,7 @@ import {
   Linkedin, 
   Github,
   ArrowUp,
-  Instagram,
-  Facebook
+  Instagram
 } from 'lucide-react';
 
 const quickLinks = [

@@ -3,8 +3,9 @@
 import { useEffect, useRef } from 'react';
 import { animations, createTimeline } from '@/lib/gsap-utils';
 import { Star, Quote, MessageCircle } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import Image from 'next/image';
 
 // First set of testimonials (for top marquee - moving right)
 const testimonialsDataTop = [
@@ -212,10 +213,12 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ testimonial }) => {
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <div className="w-12 h-12 relative rounded-full overflow-hidden">
-                <img
+                <Image
                   alt={testimonial.name}
                   className="w-full h-full object-cover"
                   src={testimonial.profile_picture}
+                  width={48}
+                  height={48}
                 />
               </div>
               <div className="ml-3">
