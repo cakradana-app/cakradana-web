@@ -116,7 +116,7 @@ export default function RootLayout({
           content={
             Array.isArray(metadata.openGraph?.images) &&
             metadata.openGraph?.images.length > 0
-              ? (metadata.openGraph.images[0] as any)?.url || metadata.openGraph.images[0]
+              ? (metadata.openGraph.images[0] as { url?: string })?.url || String(metadata.openGraph.images[0])
               : "https://cakradana.com/og-image.jpg" // Fallback jika array images kosong
           }
         />
@@ -125,7 +125,7 @@ export default function RootLayout({
           content={
             Array.isArray(metadata.openGraph?.images) &&
             metadata.openGraph?.images.length > 0
-              ? (metadata.openGraph.images[0] as any)?.width?.toString() || "1200"
+              ? (metadata.openGraph.images[0] as { width?: number })?.width?.toString() || "1200"
               : "1200"
           }
         />
@@ -134,7 +134,7 @@ export default function RootLayout({
           content={
             Array.isArray(metadata.openGraph?.images) &&
             metadata.openGraph?.images.length > 0
-              ? (metadata.openGraph.images[0] as any)?.height?.toString() || "630"
+              ? (metadata.openGraph.images[0] as { height?: number })?.height?.toString() || "630"
               : "630"
           }
         />
@@ -143,7 +143,7 @@ export default function RootLayout({
           content={
             Array.isArray(metadata.openGraph?.images) &&
             metadata.openGraph?.images.length > 0
-              ? (metadata.openGraph.images[0] as any)?.alt || "Cakradana Dashboard Preview"
+              ? (metadata.openGraph.images[0] as { alt?: string })?.alt || "Cakradana Dashboard Preview"
               : "Cakradana Dashboard Preview"
           }
         />

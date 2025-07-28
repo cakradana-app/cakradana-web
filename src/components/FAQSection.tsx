@@ -10,28 +10,28 @@ import { Badge } from '@/components/ui/badge';
 const faqs = [
   {
     id: "1",
-    title: "What is Dextektif?",
-    content: "Dextektif is an AI-powered solution designed to detect, monitor, and prevent money laundering activities in cryptocurrency trading. It provides real-time on-chain analysis, an interactive dashboard, and API integration to help regulators and crypto businesses ensure compliance with AML/CFT regulations."
+    title: "Apa itu Cakradana?",
+    content: "Cakradana adalah aplikasi web bertenaga AI yang dirancang untuk meningkatkan transparansi dan akuntabilitas dalam pembiayaan pemilu. Cakradana membantu Komisi Pemilihan Umum (KPU) dan Pusat Pelaporan dan Analisis Transaksi Keuangan (PPATK) memantau donasi real-time, mendeteksi pencucian uang, dan menyediakan visualisasi jaringan donasi."
   },
   {
     id: "2",
-    title: "How does Dextektif help with AML compliance?",
-    content: "Dextektif simplifies AML compliance by using advanced AI and blockchain analytics to detect suspicious wallet activities, trace fund flows, and generate automated compliance reports. It ensures businesses meet OJK's AML/CFT requirements effortlessly while protecting the digital financial ecosystem."
+    title: "Bagaimana Cakradana membantu kepatuhan AML dalam pembiayaan pemilu?",
+    content: "Cakradana menyederhanakan kepatuhan Anti-Pencucian Uang (AML) dengan menggunakan AI dan analitik data untuk mendeteksi pola donasi mencurigakan, melacak aliran dana, dan menghasilkan Laporan Aktivitas Mencurigakan (SAR) secara otomatis sesuai standar PPATK dan FATF."
   },
   {
     id: "3",
-    title: "Can Dextektif handle Solana's high transaction throughput?",
-    content: "Yes, Dextektif is designed to process up to 50,000 transactions per second, matching Solana's high-speed blockchain capabilities. This ensures real-time monitoring and analysis without performance issues, even during peak transaction volumes."
+    title: "Seberapa akurat deteksi AI di Cakradana?",
+    content: "Model AI Cakradana (LightGBM) dilatih dengan puluhan ribu data transaksi dan dirancang untuk memberikan skor risiko donasi dengan akurasi lebih dari 85%, memastikan deteksi anomali yang andal dan mengurangi false positives."
   },
   {
     id: "4",
-    title: "How can crypto businesses integrate Dextektif's API?",
-    content: "Crypto businesses can easily integrate Dextektif's API into their existing systems. The API allows businesses to verify wallet addresses in real-time, check risk scores, and receive blacklist updates. Integration is seamless and comes with detailed documentation and support."
+    title: "Bagaimana data donasi diinput ke Cakradana?",
+    content: "Cakradana mendukung input data donasi melalui beberapa metode: formulir donasi digital (web form), formulir kertas yang diunggah dan diproses dengan OCR (Google Cloud Vision API), serta web scraping dari sumber publik yang relevan."
   },
   {
     id: "5",
-    title: "Is Dextektif compliant with Indonesia's data privacy regulations?",
-    content: "Absolutely. Dextektif adheres to Indonesia's Personal Data Protection Law (UU PDP) by using anonymized data processing methods. This ensures that all data is handled securely and in compliance with privacy regulations."
+    title: "Apakah data donasi di Cakradana aman dan patuh regulasi?",
+    content: "Ya, Cakradana dirancang dengan standar keamanan data yang tinggi dan mematuhi peraturan perlindungan data yang berlaku di Indonesia. Seluruh proses pengolahan data dilakukan dengan cermat untuk memastikan integritas dan kerahasiaan informasi."
   }
 ];
 
@@ -92,7 +92,7 @@ export default function FAQSection() {
     <section 
       ref={sectionRef}
       id="faq" 
-      className="py-20 md:py-32 bg-white relative overflow-hidden"
+      className="py-20 md:py-24 bg-white relative overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 bg-white"></div>
@@ -106,14 +106,14 @@ export default function FAQSection() {
               <div className="flex mb-4">
                 <Badge className='bg-primary/10 text-primary border-primary/20'>
                   <CircleQuestionMark className="-ms-0.5 opacity-60" size={12} aria-hidden="true" />
-                  Explore FAQs
+                  FAQ
                 </Badge>
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium font-nohemi text-gray-900 leading-tight">
-                Common<br />questions
+                Pertanyaan<br />Umum
               </h2>
               <p className="faq-description text-lg text-gray-700 leading-relaxed">
-                Find the answers to frequently asked questions here.
+                Temukan jawaban atas pertanyaan-pertanyaan yang sering diajukan mengenai Cakradana dan cara kerjanya.
               </p>
             </div>
 
@@ -121,10 +121,10 @@ export default function FAQSection() {
             <div className="faq-support space-y-4">
               <div className="flex items-center gap-2">
                 <HelpCircle className="w-5 h-5 text-gray-700" />
-                <p className="text-gray-700 font-medium">Need further support?</p>
+                <p className="text-gray-700 font-medium">Butuh bantuan lebih lanjut?</p>
               </div>
               <Button className="bg-accent-three hover:bg-accent-three/90 text-white font-medium px-6 py-3 rounded-lg flex items-center gap-2">
-                Contact Us
+                Hubungi Kami
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>

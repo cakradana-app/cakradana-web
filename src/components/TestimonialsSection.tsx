@@ -9,96 +9,96 @@ import { Badge } from '@/components/ui/badge';
 // First set of testimonials (for top marquee - moving right)
 const testimonialsDataTop = [
   {
-    name: "Sarah Johnson",
+    name: "Indah Lestari",
     profile_picture: "https://randomuser.me/api/portraits/women/21.jpg",
-    role: "Senior Regulator",
-    organization: "OJK Indonesia",
+    role: "Pejabat Pengawas Dana",
+    organization: "Komisi Pemilihan Umum (KPU)",
     rating: 5,
-    testimonial: "Dextektif has revolutionized our ability to monitor financial crime in real-time. The AI-powered detection system has significantly improved our compliance efficiency.",
+    testimonial: "Cakradana mengubah cara kami memantau donasi. Dengan visualisasi jaringan yang jelas, kami bisa melihat aliran dana dengan mudah dan memverifikasi pengeluaran kampanye dengan lebih akurat.",
   },
   {
-    name: "Michael Chen",
+    name: "Budi Santoso",
     profile_picture: "https://randomuser.me/api/portraits/men/54.jpg",
-    role: "CTO",
-    organization: "CryptoExchange Pro",
+    role: "Analis Investigasi",
+    organization: "PPATK",
     rating: 5,
-    testimonial: "The API integration was seamless, and it helped us block high-risk wallets instantly. Our compliance team can now focus on strategic initiatives rather than manual monitoring.",
+    testimonial: "Deteksi anomali AI di Cakradana sangat presisi. Kami dapat mengidentifikasi potensi pencucian uang dengan cepat dan menghasilkan Laporan Analisis Transaksi Keuangan (SAR) sesuai standar kami.",
   },
   {
-    name: "Ahmad Rahman",
-    profile_picture: "https://randomuser.me/api/portraits/men/67.jpg",
-    role: "Founder & CEO",
-    organization: "SolanaDEX Indonesia",
-    rating: 5,
-    testimonial: "As a DEX operator, Dextektif provides the security and compliance tools we need to operate confidently in the Indonesian market. Highly recommended.",
-  },
-  {
-    name: "Diana Putri",
+    name: "Siti Aminah",
     profile_picture: "https://randomuser.me/api/portraits/women/32.jpg",
-    role: "Risk Manager",
-    organization: "FinTech Innovations",
+    role: "Manajer Kampanye",
+    organization: "Tim Pemenangan Calon X",
     rating: 5,
-    testimonial: "Real-time wallet monitoring has transformed how we approach AML compliance. The accuracy of risk scoring is impressive and saves us countless hours.",
+    testimonial: "Fitur konfirmasi transaksi Cakradana sangat membantu. Kami bisa segera merespons notifikasi mencurigakan dan memastikan transparansi dana kampanye.",
   },
   {
-    name: "Bambang Suryanto",
+    name: "Rio Pratama",
     profile_picture: "https://randomuser.me/api/portraits/men/48.jpg",
-    role: "Compliance Officer",
-    organization: "Bank Digital Indonesia",
+    role: "Ahli Tata Kelola Pemilu",
+    organization: "Lembaga Studi Demokrasi",
     rating: 5,
-    testimonial: "Dextektif's comprehensive dashboard gives us complete visibility into suspicious transactions. The alert system is precise and actionable.",
+    testimonial: "Cakradana adalah langkah maju yang signifikan untuk integritas pemilu di Indonesia. Pendekatan berbasis data dan AI adalah kunci untuk pembiayaan yang lebih bersih.",
+  },
+  {
+    name: "Lia Rahmawati",
+    profile_picture: "https://randomuser.me/api/portraits/women/62.jpg",
+    role: "Koordinator AML",
+    organization: "PPATK",
+    rating: 5,
+    testimonial: "Kemampuan Cakradana untuk mengintegrasikan data dari formulir fisik dan digital, ditambah dengan web scraping, memberikan gambaran yang sangat lengkap. Ini mempermudah pekerjaan investigasi kami.",
   },
 ];
 
 // Second set of testimonials (for bottom marquee - moving left)
 const testimonialsDataBottom = [
   {
-    name: "Sari Kusuma",
-    profile_picture: "https://randomuser.me/api/portraits/women/62.jpg",
-    role: "AML Specialist",
-    organization: "Crypto Solutions Ltd",
-    rating: 5,
-    testimonial: "The automated compliance reporting feature has streamlined our regulatory submissions. We can now generate detailed reports in minutes instead of hours.",
-  },
-  {
-    name: "Farhan Aditya",
+    name: "Bayu Wijaya",
     profile_picture: "https://randomuser.me/api/portraits/men/33.jpg",
-    role: "Head of Security",
-    organization: "BlockChain Finance",
+    role: "Ketua Divisi Keuangan",
+    organization: "Komisi Pemilihan Umum (KPU)",
     rating: 5,
-    testimonial: "Integration with multiple blockchain networks gives us unprecedented insight into cross-chain transactions. Essential for modern compliance operations.",
+    testimonial: "Cakradana sangat user-friendly. Tim kami dengan cepat beradaptasi dan sekarang memiliki kontrol yang lebih baik atas pelaporan donasi dan pengeluaran.",
   },
   {
-    name: "Helena Wijaya",
-    profile_picture: "https://randomuser.me/api/portraits/women/18.jpg",
-    role: "Regulatory Affairs Manager",
-    organization: "Digital Assets Corp",
-    rating: 5,
-    testimonial: "The machine learning algorithms continuously improve detection accuracy. False positives have decreased by 80% since implementation.",
-  },
-  {
-    name: "Irfan Maulana",
+    name: "Kevin Chandra",
     profile_picture: "https://randomuser.me/api/portraits/men/23.jpg",
-    role: "Transaction Monitoring Lead",
-    organization: "Trust Wallet Services",
-    rating: 4,
-    testimonial: "24/7 monitoring capabilities ensure we never miss suspicious activities. The real-time alerts have prevented multiple high-risk transactions.",
-  },
-  {
-    name: "Nisa Aulia",
-    profile_picture: "https://randomuser.me/api/portraits/women/41.jpg",
-    role: "Chief Compliance Officer",
-    organization: "Crypto Bank Indonesia",
+    role: "Calon Legislatif",
+    organization: "Partai Politik",
     rating: 5,
-    testimonial: "Dextektif's API documentation is excellent and implementation was straightforward. Support team is responsive and knowledgeable.",
+    testimonial: "Sebagai calon, saya sangat menghargai kemudahan dalam melaporkan donasi. Cakradana membantu saya memenuhi standar transparansi yang diharapkan pemilih.",
   },
   {
-    name: "Raka Pratama",
+    name: "Fajar Kusumo",
     profile_picture: "https://randomuser.me/api/portraits/men/90.jpg",
-    role: "Financial Crime Investigator",
-    organization: "Digital Investigation Unit",
+    role: "Spesialis Anti Pencucian Uang",
+    organization: "PPATK",
     rating: 5,
-    testimonial: "The forensic capabilities for wallet analysis are outstanding. We can trace complex transaction patterns with unprecedented detail and speed.",
+    testimonial: "Penilaian risiko real-time Cakradana adalah fitur game-changer. Kami dapat memprioritaskan kasus dengan efisiensi yang belum pernah ada sebelumnya.",
+  },
+  {
+    name: "Gita Permata",
+    profile_picture: "https://randomuser.me/api/portraits/women/18.jpg",
+    role: "Staf Verifikasi",
+    organization: "KPU Provinsi X",
+    rating: 4,
+    testimonial: "Akurasi OCR Cakradana untuk formulir kertas sangat baik. Ini mengurangi beban kerja manual dan mempercepat proses verifikasi data donasi.",
+  },
+  {
+    name: "Jaka Maulana",
+    profile_picture: "https://randomuser.me/api/portraits/men/41.jpg",
+    role: "Direktur Eksekutif",
+    organization: "Koalisi Masyarakat Anti Korupsi",
+    rating: 5,
+    testimonial: "Melihat alat seperti Cakradana digunakan dalam pemilu memberi kami harapan besar untuk proses yang lebih bersih dan bertanggung jawab.",
+  },
+  {
+    name: "Maria Simanjuntak",
+    profile_picture: "https://randomuser.me/api/portraits/women/41.jpg",
+    role: "Peneliti Kebijakan Finansial",
+    organization: "PPATK",
+    rating: 5,
+    testimonial: "Data yang disajikan Cakradana mendukung analisis kami secara signifikan. Laporan yang dihasilkan sangat membantu dalam penyusunan rekomendasi kebijakan.",
   },
 ];
 
@@ -114,24 +114,59 @@ interface TestimonialProps {
 }
 
 const TestimonialCard: React.FC<TestimonialProps> = ({ testimonial }) => {
-  // Keywords related to AML/compliance to highlight
+  // Keywords related to election funding/AML to highlight
   const keywordsToHighlight = [
+    "transparansi",
+    "akuntabilitas",
+    "donasi",
+    "pemilu",
+    "kampanye",
+    "AI",
+    "deteksi",
+    "pencucian uang",
+    "AML",
+    "KPU",
+    "PPATK",
+    "verifikasi",
+    "laporan",
+    "jaringan",
+    "anomali",
+    "integrasi",
+    "OCR",
+    "web scraping",
+    "konfirmasi",
+    "korupsi",
     "real-time",
-    "monitoring",
-    "compliance",
-    "detection",
-    "security",
-    "API",
-    "integration",
-    "accuracy",
-    "automated",
-    "alerts",
-    "blockchain",
-    "transactions",
-    "risk",
-    "suspicious",
-    "prevention",
-    "forensic",
+    "visualisasi",
+    "SAR",
+    "investigasi",
+    "transaksi",
+    "mencurigakan",
+    "integritas",
+    "pembiayaan",
+    "kampanye",
+    "pelaporan",
+    "standar",
+    "analisis",
+    "data",
+    "formulir",
+    "fisik",
+    "digital",
+    "user-friendly",
+    "calon",
+    "legislatif",
+    "partai",
+    "politik",
+    "pemilih",
+    "risiko",
+    "efisiensi",
+    "akurasi",
+    "manual",
+    "proses",
+    "bersih",
+    "bertanggung jawab",
+    "kebijakan",
+    "rekomendasi",
   ];
 
   // Function to highlight keywords in text
@@ -254,14 +289,14 @@ export default function TestimonialsSection() {
         <div className="flex justify-center mb-4">
           <Badge className='bg-blue-100 text-blue-700 border-blue-200'>
             <MessageCircle className="-ms-0.5 opacity-60" size={12} aria-hidden="true" />
-            Testimonials
+            Ulasan Pengguna
           </Badge>
         </div>
         <h2 className="testimonials-headline text-3xl md:text-5xl lg:text-6xl font-medium font-nohemi text-gray-900 mb-6">
-          What Our Users Say
+          Dukungan untuk Integritas Pemilu: Ulasan Pengguna Cakradana
         </h2>
         <p className="testimonials-description text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          Trusted by regulators and crypto businesses across Indonesia for reliable AML compliance
+          Dipercaya oleh KPU, PPATK, dan Tim Kampanye untuk transparansi dan akuntabilitas pembiayaan pemilu
         </p>
       </div>
 

@@ -5,9 +5,9 @@ import { animations, createTimeline } from '@/lib/gsap-utils';
 import { 
   Shield, 
   TrendingUp, 
-  Zap, 
-  Code, 
-  Lock,
+  Scale, 
+  Eye, 
+  FlagOff,
   Check,
   Gift,
   MessageSquare,
@@ -19,33 +19,33 @@ import { Badge } from '@/components/ui/badge';
 
 const benefits = [
   {
-    icon: MessageSquare,
-    title: "Real-time Messaging",
-    description: "Instantly communicate with your team, ensuring swift decision-making and seamless collaboration on project tasks and updates.",
+    icon: Eye,
+    title: "Transparansi Dana Pemilu",
+    description: "Sediakan visibilitas penuh terhadap setiap donasi dan pengeluaran kampanye secara real-time untuk semua pihak terkait.",
     color: "text-blue-600"
   },
   {
-    icon: Zap,
-    title: "Task Management",
-    description: "Organize and prioritize tasks effectively, assigning responsibilities and tracking progress to keep projects on schedule and within scope.",
+    icon: Scale,
+    title: "Akuntabilitas yang Ditingkatkan",
+    description: "Memastikan setiap transaksi donasi tercatat dan diverifikasi, mengurangi celah untuk korupsi dan penyalahgunaan dana.",
     color: "text-green-600"
   },
   {
     icon: Shield,
-    title: "Regulatory Compliance",
-    description: "Meet OJK's AML/CFT requirements effortlessly with automated compliance reporting and real-time monitoring capabilities.",
+    title: "Kepatuhan Regulasi",
+    description: "Bantu KPU dan PPATK memenuhi persyaratan AML/CFT sesuai standar peraturan domestik dan internasional (FATF).",
     color: "text-purple-600"
   },
   {
     icon: TrendingUp,
-    title: "Advanced Analytics",
-    description: "Get detailed insights into transaction patterns and suspicious activities with our machine learning-powered detection system.",
+    title: "Deteksi Pencucian Uang Efektif",
+    description: "Manfaatkan kekuatan AI untuk secara otomatis mendeteksi pola pencucian uang dan aktivitas mencurigakan dalam pembiayaan pemilu.",
     color: "text-orange-600"
   },
   {
-    icon: Lock,
-    title: "Privacy Compliance",
-    description: "Anonymized data processing ensures adherence to UU PDP regulations while maintaining the highest security standards.",
+    icon: FlagOff,
+    title: "Pencegahan Korupsi",
+    description: "Dengan pelacakan donasi dan verifikasi pengeluaran yang ketat, Cakradana berperan aktif dalam mengurangi potensi korupsi pemilu.",
     color: "text-red-600"
   }
 ];
@@ -148,16 +148,16 @@ export default function BenefitsSection() {
             </div>
             
             <h2 className="benefits-headline text-4xl md:text-5xl lg:text-6xl font-medium font-nohemi text-gray-900 leading-tight">
-              Driving Financial Security in the Digital Economy
+              Meningkatkan Transparansi dan Integritas Pembiayaan Pemilu
             </h2>
             
             <p className="benefits-description text-lg md:text-xl text-gray-700 leading-relaxed max-w-lg">
-              Delivering Advanced Tools to Combat Money Laundering in Crypto
+              Menyediakan alat canggih untuk memerangi pencucian uang dan korupsi dalam pembiayaan kampanye politik
             </p>
 
             <div className="benefits-cta">
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full">
-                Get started
+                Mulai Sekarang
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>

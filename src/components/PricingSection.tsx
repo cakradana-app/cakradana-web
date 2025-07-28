@@ -9,52 +9,50 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
-const plans = [
+const accessLevels = [
   {
-    name: "Basic",
-    price: "$500",
-    period: "/month",
-    description: "Perfect for small crypto businesses",
+    name: "Akses KPU (Dasar)",
+    price: "Gratis",
+    period: "Untuk Demo",
+    description: "Ideal untuk staf KPU di tingkat provinsi/kabupaten.",
     features: [
-      "10,000 API calls/month",
-      "Basic wallet monitoring",
-      "Email support",
-      "Standard compliance reports",
-      "Basic dashboard access"
+      "Unggah donasi via formulir digital",
+      "Pemantauan donasi dasar",
+      "Visualisasi jaringan donasi (terbatas)",
+      "Akses laporan dana standar",
+      "Dukungan email"
     ],
     popular: false,
     color: "border-gray-200"
   },
   {
-    name: "Pro",
-    price: "$1,000",
-    period: "/month",
-    description: "Ideal for growing exchanges",
+    name: "Akses KPU & PPATK (Penuh)",
+    price: "Hubungi Kami",
+    period: "",
+    description: "Solusi komprehensif untuk pengawasan tingkat nasional.",
     features: [
-      "100,000 API calls/month",
-      "Advanced AI detection",
-      "Priority support",
-      "Custom compliance reports",
-      "Full dashboard access",
-      "Real-time alerts",
-      "API webhooks"
+      "Unggah donasi via formulir digital & OCR",
+      "Pemantauan donasi real-time & advance",
+      "Deteksi anomali AI & skor risiko",
+      "Visualisasi jaringan donasi interaktif",
+      "Laporan SAR sesuai PPATK/FATF",
+      "Dashboard kandidat & verifikasi transaksi",
+      "Dukungan prioritas"
     ],
     popular: true,
     color: "border-accent-three"
   },
   {
-    name: "Enterprise",
-    price: "Custom",
+    name: "Akses Kandidat",
+    price: "Gratis",
     period: "",
-    description: "For large-scale operations",
+    description: "Untuk kandidat/penerima donasi agar patuh dan transparan.",
     features: [
-      "Unlimited API calls",
-      "Custom AI models",
-      "Dedicated support",
-      "Custom integrations",
-      "White-label solutions",
-      "On-premise deployment",
-      "SLA guarantees"
+      "Input donasi via formulir kertas/digital",
+      "Notifikasi transaksi mencurigakan",
+      "Konfirmasi/pelaporan transaksi via dashboard",
+      "Pelaporan dana kampanye dasar",
+      "Dukungan via email"
     ],
     popular: false,
     color: "border-gray-200"
@@ -112,7 +110,7 @@ export default function PricingSection() {
     <section 
       ref={sectionRef}
       id="pricing" 
-      className="py-20 md:py-32 bg-white relative overflow-hidden"
+      className="py-20 md:py-20 bg-white relative overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 bg-white"></div>
@@ -123,70 +121,78 @@ export default function PricingSection() {
           <div className="flex justify-center mb-4">
             <Badge className='bg-primary/10 text-primary border-accent-three/20'>
               <Banknote className="-ms-0.5 opacity-60" size={12} aria-hidden="true" />
-              Pricing
+              Solusi
             </Badge>
           </div>
           <h2 className="pricing-headline text-3xl md:text-5xl lg:text-6xl font-medium font-nohemi text-gray-900 mb-6">
-            Flexible Pricing for Every Business
+            Pilihan Akses Cakradana: Wujudkan Pemilu Transparan
           </h2>
           <p className="pricing-description text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Choose the plan that fits your needs and scale as you grow
+            Cakradana menawarkan tingkat akses yang disesuaikan untuk kebutuhan Komisi Pemilihan Umum (KPU), Pusat Pelaporan dan Analisis Transaksi Keuangan (PPATK), serta kandidat pemilu.
           </p>
         </div>
 
-        {/* Pricing Cards */}
+        {/* Access Level Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-          {plans.map((plan, index) => (
+          {accessLevels.map((level, index) => (
             <Card 
               key={index}
               className={`pricing-card relative hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm flex flex-col ${
-                plan.popular ? 'ring-2 ring-accent-three/20 scale-105' : ''
+                level.popular 
+                  ? 'ring-2 ring-accent-three/20 scale-105 h-full md:h-[600px]' 
+                  : 'h-full md:h-[520px] md:mt-10'
               }`}
             >
               {/* Popular Badge */}
-              {plan.popular && (
+              {level.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <Badge className="bg-accent-three text-white px-4 py-2 flex items-center gap-1">
                     <Star className="w-4 h-4" />
-                    Most Popular
+                    Solusi Utama
                   </Badge>
                 </div>
               )}
 
-              <CardHeader className="text-center pb-4">
-                <CardTitle className="text-2xl font-semibold text-gray-900 mb-2">{plan.name}</CardTitle>
-                <CardDescription className="text-gray-600">{plan.description}</CardDescription>
-                <div className="flex items-baseline justify-center mt-4">
-                  <span className="text-4xl md:text-5xl font-bold text-gray-900">{plan.price}</span>
-                  <span className="text-gray-600 ml-1">{plan.period}</span>
+              <CardHeader className="text-center pb-6">
+                <CardTitle className="text-2xl font-semibold text-gray-900 mb-2">{level.name}</CardTitle>
+                <CardDescription className="text-gray-600 mb-4">{level.description}</CardDescription>
+                
+                {/* Improved Pricing Layout */}
+                <div className="flex flex-col items-center justify-center">
+                  <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
+                    {level.price}
+                  </div>
+                  {level.period && (
+                    <div className="text-sm text-gray-500 font-medium">
+                      {level.period}
+                    </div>
+                  )}
                 </div>
               </CardHeader>
 
               <CardContent className="flex-grow flex flex-col">
-                <div className="space-y-4 mb-8 flex-grow">
-                  {plan.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center">
-                      <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                <div className="space-y-3 mb-8 flex-grow">
+                  {level.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-start">
+                      <Check className="w-4 h-4 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 <Button 
-                  className={`w-full ${
-                    plan.popular 
+                  className={`w-full mt-auto ${
+                    level.popular 
                       ? 'bg-accent-three hover:bg-accent-three/90 text-white' 
                       : 'bg-accent-one border-2 text-white hover:bg-accent-three hover:text-white'
                   }`}
                 >
-                  {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}
+                  {level.price === "Hubungi Kami" ? "Hubungi Kami" : "Mulai Sekarang"}
                 </Button>
               </CardContent>
             </Card>
           ))}
         </div>
-
-
       </div>
     </section>
   );

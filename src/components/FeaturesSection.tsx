@@ -7,7 +7,7 @@ import {
   BarChart3, 
   Cpu, 
   Code, 
-  Database,
+  CheckCircle,
   ZapIcon
 } from 'lucide-react';
 import Image from 'next/image';
@@ -19,36 +19,36 @@ import React from 'react';
 const features = [
   {
     icon: Shield,
-    title: "Real-Time Wallet Monitoring",
-    description: "Detect suspicious wallet activities instantly with our advanced monitoring system.",
+    title: "Pemantauan Donasi Real-Time",
+    description: "Lacak setiap aliran dana donasi kampanye secara instan dari berbagai sumber.",
     color: "text-blue-600",
     size: "large" // spans 2 columns
   },
   {
     icon: BarChart3,
-    title: "Interactive Dashboard", 
-    description: "Visualize transaction networks and generate comprehensive compliance reports.",
+    title: "Dashboard Analitik Interaktif", 
+    description: "Visualisasikan hubungan donatur dan penerima, serta hasilkan laporan keuangan kampanye yang komprehensif.",
     color: "text-green-600",
     size: "large" // spans 2 columns
   },
   {
     icon: Cpu,
-    title: "AI-Powered Anomaly Detection",
-    description: "Identify rapid buy-sell cycles and volume spikes using machine learning algorithms.",
+    title: "Deteksi Anomali Bertenaga AI",
+    description: "Identifikasi pola donasi mencurigakan, seperti smurfing atau transaksi ilegal, menggunakan algoritma pembelajaran mesin canggih.",
     color: "text-purple-600",
     size: "small"
   },
   {
     icon: Code,
-    title: "API Integration",
-    description: "Verify wallet addresses in real-time with dynamic blacklist updates.",
+    title: "Integrasi Data Beragam Sumber",
+    description: "Sistem mendukung input data dari formulir donasi kertas (OCR), digital, hingga web scraping untuk deteksi anomali.",
     color: "text-orange-600",
     size: "small"
   },
   {
-    icon: Database,
-    title: "Blockchain Analytics",
-    description: "Trace wallet interactions across Solana DEXs with comprehensive analytics tools.",
+    icon: CheckCircle,
+    title: "Verifikasi & Konfirmasi Donasi",
+    description: "Kandidat/penerima donasi dapat mengkonfirmasi atau melaporkan transaksi mencurigakan melalui dashboard khusus.",
     color: "text-indigo-600",
     size: "wide" // spans full width
   }
@@ -112,7 +112,7 @@ export default function FeaturesSection() {
             </Badge>
           </div>
           <h2 className="features-headline text-3xl md:text-5xl lg:text-6xl font-medium font-nohemi text-white mb-6 max-w-4xl mx-auto">
-            Powerful Features to Combat Financial Crime
+            Fitur Unggulan untuk Transparansi & Integritas Pemilu
           </h2>
         </div>
 

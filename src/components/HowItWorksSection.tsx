@@ -4,9 +4,9 @@ import { useEffect, useRef } from 'react';
 import { animations, createTimeline, createScrollTrigger } from '@/lib/gsap-utils';
 import { 
   Database, 
-  Settings, 
+  Cpu, 
   BarChart3, 
-  Code,
+  UserCheck,
   ArrowRight,
   Footprints
 } from 'lucide-react';
@@ -16,26 +16,26 @@ import { Badge } from '@/components/ui/badge';
 const steps = [
   {
     icon: Database,
-    title: "Data Collection",
-    description: "Dextektif ingests real-time Solana transaction data from multiple DEX sources.",
+    title: "Pengumpulan Data",
+    description: "Cakradana menerima data donasi dari formulir digital, OCR formulir kertas, dan web scraping sumber publik.",
     color: "text-blue-500"
   },
   {
-    icon: Settings,
-    title: "AI Analysis",
-    description: "AI/ML models detect anomalies and classify wallet risks automatically.",
+    icon: Cpu,
+    title: "Analisis AI & Penilaian Risiko",
+    description: "Model AI/ML kami menganalisis donasi, mendeteksi anomali, dan menetapkan skor risiko secara otomatis.",
     color: "text-purple-500"
   },
   {
     icon: BarChart3,
-    title: "Dashboard Insights",
-    description: "Regulators monitor suspicious wallets and generate comprehensive reports.",
+    title: "Visualisasi & Laporan Komprehensif",
+    description: "Pengguna (KPU & PPATK) memantau donasi mencurigakan, melihat jaringan donasi interaktif, dan menghasilkan laporan SAR.",
     color: "text-green-500"
   },
   {
-    icon: Code,
-    title: "API Integration",
-    description: "Businesses verify wallet addresses before transactions in real-time.",
+    icon: UserCheck,
+    title: "Konfirmasi & Verifikasi Kandidat",
+    description: "Kandidat dapat mengkonfirmasi transaksi yang ditandai mencurigakan, meningkatkan akurasi data dan akuntabilitas.",
     color: "text-orange-500"
   }
 ];
@@ -90,19 +90,19 @@ export default function HowItWorksSection() {
           <div className="flex justify-start mb-6">
             <Badge className='bg-primary/10 text-primary border-primary/20'>
               <Footprints className="-ms-0.5 text-primary" size={12} aria-hidden="true" />
-              Steps
+              Langkah Kerja
             </Badge>
           </div>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium font-nohemi text-gray-900 mb-3 max-w-3xl">
-            Effortless On-Chain Analysis with Dextektif
+            Alur Kerja Transparansi Pembiayaan Pemilu
           </h2>
           <div className="flex justify-between items-end">
             <p className="text-sm md:text-base text-gray-600 max-w-xl leading-relaxed">
-              Transforming complex blockchain data into actionable compliance tools
+              Mengubah data donasi kampanye menjadi alat monitoring yang efektif untuk KPU dan PPATK
             </p>
             <div className="hidden lg:block">
               <Button variant="link" className="text-primary hover:text-primary/80 p-0 h-auto font-medium">
-                Learn more <ArrowRight className="w-4 h-4 ml-1" />
+                Pelajari lebih lanjut <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </div>
           </div>

@@ -16,25 +16,25 @@ import {
 } from 'lucide-react';
 
 const quickLinks = [
-  { name: "Home", href: "#home" },
-  { name: "Features", href: "#features" },
-  { name: "How It Works", href: "#how-it-works" },
-  { name: "Pricing", href: "#pricing" },
+  { name: "Beranda", href: "#home" },
+  { name: "Fitur", href: "#features" },
+  { name: "Cara Kerja", href: "#how-it-works" },
+  { name: "Solusi", href: "#pricing" },
   { name: "FAQ", href: "#faq" }
 ];
 
 const companyLinks = [
-  { name: "About Us", href: "#" },
-  { name: "Careers", href: "#" },
+  { name: "Tentang Kami", href: "#" },
+  { name: "Tim", href: "#" },
   { name: "Blog", href: "#" },
-  { name: "Press", href: "#" }
+  { name: "Media", href: "#" }
 ];
 
 const legalLinks = [
-  { name: "Privacy Policy", href: "#" },
-  { name: "Terms of Service", href: "#" },
-  { name: "Cookie Policy", href: "#" },
-  { name: "GDPR", href: "#" }
+  { name: "Kebijakan Privasi", href: "#" },
+  { name: "Ketentuan Layanan", href: "#" },
+  { name: "Kebijakan Cookie", href: "#" },
+  { name: "UU PDP", href: "#" }
 ];
 
 export default function Footer() {
@@ -77,8 +77,8 @@ export default function Footer() {
                 {/* Logo Image */}
                 <div className="mb-6">
                   <Image
-                    src="/logo.png"
-                    alt="Dextektif Logo"
+                    src="/logo-white.png"
+                    alt="Cakradana Logo"
                     width={180}
                     height={60}
                     className="h-12 w-auto"
@@ -86,7 +86,7 @@ export default function Footer() {
                   />
                 </div>
                 <p className="text-white leading-relaxed text-base max-w-sm">
-                  AI-powered anti-money laundering solution for decentralized exchanges on Solana blockchain.
+                  Solusi bertenaga AI untuk meningkatkan transparansi dan akuntabilitas dalam pembiayaan pemilu di Indonesia.
                 </p>
               </div>
               
@@ -96,7 +96,7 @@ export default function Footer() {
                   <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mr-3 group-hover:bg-white/20 transition-colors">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <span>contact@dextektif.com</span>
+                  <span>contact@cakradana.id</span>
                 </div>
                 <div className="flex items-center text-white hover:text-gray-200 transition-colors group">
                   <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mr-3 group-hover:bg-white/20 transition-colors">
@@ -118,7 +118,7 @@ export default function Footer() {
               {/* Quick Links */}
               <div>
                 <h4 className="text-lg font-semibold text-white mb-6 relative">
-                  Quick Links
+                  Tautan Cepat
                   <div className="absolute -bottom-2 left-0 w-8 h-0.5 bg-white"></div>
                 </h4>
                 <ul className="space-y-3">
@@ -138,7 +138,7 @@ export default function Footer() {
               {/* Company */}
               <div>
                 <h4 className="text-lg font-semibold text-white mb-6 relative">
-                  Company
+                  Perusahaan
                   <div className="absolute -bottom-2 left-0 w-8 h-0.5 bg-white"></div>
                 </h4>
                 <ul className="space-y-3">
@@ -182,7 +182,7 @@ export default function Footer() {
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
               {/* Social Media */}
               <div className="flex flex-col items-start gap-4">
-                <h5 className="text-white font-medium">Follow us</h5>
+                <h5 className="text-white font-medium">Ikuti Kami</h5>
                 <div className="flex space-x-3">
                   <a 
                     href="#" 
@@ -219,7 +219,7 @@ export default function Footer() {
               <button
                 onClick={scrollToTop}
                 className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-primary hover:scale-105 transition-all duration-200 group"
-                aria-label="Back to top"
+                aria-label="Kembali ke atas"
               >
                 <ArrowUp className="w-5 h-5 group-hover:animate-bounce" />
               </button>
@@ -231,7 +231,7 @@ export default function Footer() {
         <div className="py-8 border-t border-white/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © 2025 Dextektif. All rights reserved.
+              © 2025 Cakradana. Hak cipta dilindungi.
             </p>
 
           </div>
