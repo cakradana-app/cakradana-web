@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import StagewiseToolbarWrapper from "@/components/StagewiseToolbarWrapper"; // Pertimbangkan apakah ini masih relevan untuk Cakradana
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -160,7 +159,6 @@ export default function RootLayout({
             Anda mungkin ingin menghapusnya atau menggantinya dengan sesuatu yang relevan
             untuk Cakradana (misalnya, footer atau debug toolbar jika ada).
         */}
-        <StagewiseToolbarWrapper />
       </body>
     </html>
   );
