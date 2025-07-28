@@ -98,7 +98,7 @@ export default function FeaturesSection() {
     <section 
       ref={sectionRef}
       id="features" 
-      className="py-20 md:py-32 bg-primer relative overflow-hidden"
+      className="pb-20 pt-5 md:pb-32 md:pt-10 bg-accent-three relative overflow-hidden"
     >
       {/* Background Elements */}
 
@@ -122,7 +122,7 @@ export default function FeaturesSection() {
             {/* Top row - 2 cards */}
             <Card className="feature-card hover:shadow-lg transition-all duration-300 border border-white/20 bg-white/10 backdrop-blur-sm rounded-2xl p-6 opacity-0 translate-y-8 scale-95">
               <div className="mb-6">
-                <div className="w-12 h-12 rounded-xl bg-lime-400 flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-4">
                   {React.createElement(features[0].icon, { className: "w-6 h-6 text-gray-800" })}
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">
@@ -147,7 +147,7 @@ export default function FeaturesSection() {
 
             <Card className="feature-card hover:shadow-lg transition-all duration-300 border border-white/20 bg-white/10 backdrop-blur-sm rounded-2xl p-6 opacity-0 translate-y-8 scale-95">
               <div className="mb-6">
-                <div className="w-12 h-12 rounded-xl bg-lime-400 flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-4">
                   {React.createElement(features[1].icon, { className: "w-6 h-6 text-gray-800" })}
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">
@@ -175,7 +175,7 @@ export default function FeaturesSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <Card className="feature-card hover:shadow-lg transition-all duration-300 border border-white/20 bg-white/10 backdrop-blur-sm rounded-2xl p-6 h-[400px] opacity-0 translate-y-8 scale-95">
               <div className="mb-4">
-                <div className="w-12 h-12 rounded-xl bg-lime-400 flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-4">
                   {React.createElement(features[2].icon, { className: "w-6 h-6 text-gray-800" })}
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
@@ -200,7 +200,7 @@ export default function FeaturesSection() {
 
             <Card className="feature-card hover:shadow-lg transition-all duration-300 border border-white/20 bg-white/10 backdrop-blur-sm rounded-2xl p-6 h-[400px] opacity-0 translate-y-8 scale-95">
               <div className="mb-4">
-                <div className="w-12 h-12 rounded-xl bg-lime-400 flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-4">
                   {React.createElement(features[3].icon, { className: "w-6 h-6 text-gray-800" })}
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
@@ -225,7 +225,7 @@ export default function FeaturesSection() {
 
             <Card className="feature-card hover:shadow-lg transition-all duration-300 border border-white/20 bg-white/10 backdrop-blur-sm rounded-2xl p-6 h-[400px] opacity-0 translate-y-8 scale-95">
               <div className="mb-4">
-                <div className="w-12 h-12 rounded-xl bg-lime-400 flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-4">
                   {React.createElement(features[4].icon, { className: "w-6 h-6 text-gray-800" })}
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">

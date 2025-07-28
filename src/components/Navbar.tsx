@@ -84,9 +84,9 @@ export default function Navbar() {
               <Image 
                 src="/logo-white.png" 
                 alt="Logo" 
-                width={144}
-                height={144}
-                className="w-20 h-20 md:w-28 lg:w-36 md:h-28 lg:h-36 object-contain"
+                width={170}
+                height={170}
+                className="w-42 h-42 md:w-42 lg:w-54 md:h-42 lg:h-54 object-contain"
               />
             </Link>
           </div>
@@ -97,7 +97,7 @@ export default function Navbar() {
               <a
                 key={item.label}
                 href={item.href}
-                className="nav-item text-white hover:text-primer transition-colors duration-200 font-medium"
+                className="nav-item text-white hover:text-primary transition-colors duration-200 font-medium"
                 onClick={() => animations.buttonPress(`.nav-item:nth-child(${index + 1})`)}
               >
                 {item.label}
@@ -163,7 +163,7 @@ export default function Navbar() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-gray-600 hover:text-primer transition-colors duration-200 font-medium text-lg text-center py-2"
+                  className="text-gray-600 hover:text-primary transition-colors duration-200 font-medium text-lg text-center py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
@@ -175,7 +175,7 @@ export default function Navbar() {
                 <Button
                   variant="ghost"
                   size="default"
-                  className="text-gray-600 hover:text-primer hover:bg-primer/10 py-3 rounded-full w-full"
+                  className="text-gray-600 hover:text-primary hover:bg-primary/10 py-3 rounded-full w-full"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Login
@@ -183,7 +183,7 @@ export default function Navbar() {
                 
                 <Button
                   size="default"
-                  className="bg-white hover:bg-primer/90 text-primer flex items-center justify-center space-x-2 py-3 rounded-full w-full"
+                  className="bg-white hover:bg-primary/90 text-primary flex items-center justify-center space-x-2 py-3 rounded-full w-full"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <span>Explore Now</span>

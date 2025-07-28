@@ -9,24 +9,28 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Custom DeXtektif colors
-        primer: '#005655',
-        sekunder: '#00c71e',
-        accent: '#c9f001',
-        background: '#ffffff',
-        // Default shadcn colors
+        // Custom color palette - direct hex values
+        primary: {
+          DEFAULT: "#2A8AFB",
+          foreground: "#ffffff"
+        },
+        secondary: {
+          DEFAULT: "#56EF9F",
+          foreground: "#000000"
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+          one: "#103fD3",
+          two: "#67B8E3",
+          three: "#122861"
+        },
+        // Shadcn colors using CSS variables
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))"
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))"
-        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))"

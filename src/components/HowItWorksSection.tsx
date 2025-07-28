@@ -88,8 +88,8 @@ export default function HowItWorksSection() {
         {/* Section Header */}
         <div className="how-it-works-header text-left mb-10 md:mb-12 opacity-0 translate-y-8">
           <div className="flex justify-start mb-6">
-            <Badge className='bg-primer/10 text-primer border-primer/20'>
-              <Footprints className="-ms-0.5 text-primer" size={12} aria-hidden="true" />
+            <Badge className='bg-primary/10 text-primary border-primary/20'>
+              <Footprints className="-ms-0.5 text-primary" size={12} aria-hidden="true" />
               Steps
             </Badge>
           </div>
@@ -101,7 +101,7 @@ export default function HowItWorksSection() {
               Transforming complex blockchain data into actionable compliance tools
             </p>
             <div className="hidden lg:block">
-              <Button variant="link" className="text-primer hover:text-primer/80 p-0 h-auto font-medium">
+              <Button variant="link" className="text-primary hover:text-primary/80 p-0 h-auto font-medium">
                 Learn more <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </div>

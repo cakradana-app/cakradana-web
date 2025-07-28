@@ -40,7 +40,7 @@ const plans = [
       "API webhooks"
     ],
     popular: true,
-    color: "border-primer"
+    color: "border-accent-three"
   },
   {
     name: "Enterprise",
@@ -121,7 +121,7 @@ export default function PricingSection() {
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <div className="flex justify-center mb-4">
-            <Badge className='bg-primer/10 text-primer border-primer/20'>
+            <Badge className='bg-primary/10 text-primary border-accent-three/20'>
               <Banknote className="-ms-0.5 opacity-60" size={12} aria-hidden="true" />
               Pricing
             </Badge>
@@ -140,13 +140,13 @@ export default function PricingSection() {
             <Card 
               key={index}
               className={`pricing-card relative hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm flex flex-col ${
-                plan.popular ? 'ring-2 ring-primer/20 scale-105' : ''
+                plan.popular ? 'ring-2 ring-accent-three/20 scale-105' : ''
               }`}
             >
               {/* Popular Badge */}
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-primer text-white px-4 py-2 flex items-center gap-1">
+                  <Badge className="bg-accent-three text-white px-4 py-2 flex items-center gap-1">
                     <Star className="w-4 h-4" />
                     Most Popular
                   </Badge>
@@ -175,8 +175,8 @@ export default function PricingSection() {
                 <Button 
                   className={`w-full ${
                     plan.popular 
-                      ? 'bg-primer hover:bg-primer/90 text-white' 
-                      : 'border-2 border-primer text-white hover:bg-primer hover:text-white'
+                      ? 'bg-accent-three hover:bg-accent-three/90 text-white' 
+                      : 'bg-accent-one border-2 text-white hover:bg-accent-three hover:text-white'
                   }`}
                 >
                   {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}

@@ -149,7 +149,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ testimonial }) => {
       <>
         {parts.map((part, index) => 
           part.toLowerCase() === foundKeyword.toLowerCase() ? (
-            <span key={index} className="text-emerald-600 font-medium">{part}</span>
+            <span key={index} className="text-blue-600 font-medium">{part}</span>
           ) : (
             part
           )
@@ -162,8 +162,8 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ testimonial }) => {
     <Card className="min-w-[380px] max-w-[420px] mx-4 shadow-sm rounded-3xl overflow-hidden bg-white flex flex-col h-full border-0">
       <CardContent className="pt-8 pb-6 px-7 flex flex-col justify-between h-full">
         <div>
-          <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center mb-4">
-            <Quote className="text-emerald-500" size={24} />
+          <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+            <Quote className="text-blue-500" size={24} />
           </div>
 
           <p className="text-gray-700 text-base leading-relaxed mb-6 whitespace-normal">
@@ -190,7 +190,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ testimonial }) => {
                 <div className="text-gray-600 text-sm">
                   {testimonial.role}
                 </div>
-                <div className="text-emerald-600 text-sm font-medium">
+                <div className="text-blue-600 text-sm font-medium">
                   {testimonial.organization}
                 </div>
               </div>
@@ -236,23 +236,23 @@ export default function TestimonialsSection() {
       {/* Pure white base background */}
       <div className="absolute inset-0 bg-white z-0" />
 
-      {/* Light green content area with inset margins for smooth transition */}
-      <div className="absolute inset-x-0 top-[60px] bottom-[60px] bg-emerald-50/90 z-0" />
+      {/* Light blue content area with inset margins for smooth transition */}
+      <div className="absolute inset-x-0 top-[60px] bottom-[60px] bg-blue-50/90 z-0" />
 
-      {/* Top transition - subtle gradient from white to emerald */}
-      <div className="absolute top-0 left-0 right-0 h-[80px] bg-gradient-to-b from-white to-emerald-50/90 z-0" />
+      {/* Top transition - subtle gradient from white to blue */}
+      <div className="absolute top-0 left-0 right-0 h-[80px] bg-gradient-to-b from-white to-blue-50/90 z-0" />
 
-      {/* Bottom transition - subtle gradient from emerald to white */}
-      <div className="absolute bottom-0 left-0 right-0 h-[80px] bg-gradient-to-t from-white to-emerald-50/90 z-0" />
+      {/* Bottom transition - subtle gradient from blue to white */}
+      <div className="absolute bottom-0 left-0 right-0 h-[80px] bg-gradient-to-t from-white to-blue-50/90 z-0" />
 
       {/* Decorative elements */}
-      <div className="absolute top-1/4 right-10 w-32 h-32 bg-emerald-200/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 left-10 w-48 h-48 bg-emerald-300/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/4 right-10 w-32 h-32 bg-blue-200/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 left-10 w-48 h-48 bg-blue-300/20 rounded-full blur-3xl"></div>
 
       {/* Title content */}
       <div className="max-w-5xl mx-auto text-center relative z-10 mb-16 md:mb-20">
         <div className="flex justify-center mb-4">
-          <Badge className='bg-emerald-100 text-emerald-700 border-emerald-200'>
+          <Badge className='bg-blue-100 text-blue-700 border-blue-200'>
             <MessageCircle className="-ms-0.5 opacity-60" size={12} aria-hidden="true" />
             Testimonials
           </Badge>

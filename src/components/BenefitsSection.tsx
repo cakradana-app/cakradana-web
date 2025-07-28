@@ -141,8 +141,8 @@ export default function BenefitsSection() {
           {/* Left Content - Sticky */}
           <div ref={leftContentRef} className="space-y-8">
             <div className="flex mb-6">
-              <Badge className='bg-primer/10 text-primer border-primer/20'>
-                <Gift className="-ms-0.5 text-primer" size={12} aria-hidden="true" />
+              <Badge className='bg-primary/10 text-primary border-primary/20'>
+                <Gift className="-ms-0.5 text-primary" size={12} aria-hidden="true" />
                 Benefits
               </Badge>
             </div>
@@ -156,7 +156,7 @@ export default function BenefitsSection() {
             </p>
 
             <div className="benefits-cta">
-              <Button className="bg-primer hover:bg-primer/90 text-white px-8 py-3 rounded-full">
+              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full">
                 Get started
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

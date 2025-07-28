@@ -102,7 +102,7 @@ export default function VideoDemo({ className = "" }: VideoDemoProps) {
         <source src="https://cdn.cargovision.app/video.mp4" type="video/mp4" />
         <div className="flex items-center justify-center h-48 md:h-64 bg-gray-100 text-gray-500">
           <div className="text-center">
-            <HiOutlineCollection className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 text-primer stroke-2" />
+            <HiOutlineCollection className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 text-primary stroke-2" />
             <p className="text-sm md:text-base">Video could not be loaded</p>
           </div>
         </div>

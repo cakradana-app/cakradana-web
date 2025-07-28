@@ -104,7 +104,7 @@ export default function FAQSection() {
             {/* Header */}
             <div className="faq-header space-y-4">
               <div className="flex mb-4">
-                <Badge className='bg-primer/10 text-primer border-primer/20'>
+                <Badge className='bg-primary/10 text-primary border-primary/20'>
                   <CircleQuestionMark className="-ms-0.5 opacity-60" size={12} aria-hidden="true" />
                   Explore FAQs
                 </Badge>
@@ -123,8 +123,8 @@ export default function FAQSection() {
                 <HelpCircle className="w-5 h-5 text-gray-700" />
                 <p className="text-gray-700 font-medium">Need further support?</p>
               </div>
-              <Button className="bg-primer hover:bg-primer/90 text-white font-medium px-6 py-3 rounded-lg flex items-center gap-2">
-                Contact us
+              <Button className="bg-accent-three hover:bg-accent-three/90 text-white font-medium px-6 py-3 rounded-lg flex items-center gap-2">
+                Contact Us
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>

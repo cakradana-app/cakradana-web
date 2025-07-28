@@ -54,7 +54,7 @@ export default function Footer() {
   return (
     <footer 
       ref={footerRef}
-      className="bg-primer text-white relative overflow-hidden rounded-t-[100px]"
+      className="bg-accent-three text-white relative overflow-hidden rounded-t-[100px]"
     >
       {/* Background Image */}
       <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] opacity-100">
@@ -218,7 +218,7 @@ export default function Footer() {
               {/* Back to top */}
               <button
                 onClick={scrollToTop}
-                className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-primer hover:scale-105 transition-all duration-200 group"
+                className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-primary hover:scale-105 transition-all duration-200 group"
                 aria-label="Back to top"
               >
                 <ArrowUp className="w-5 h-5 group-hover:animate-bounce" />
