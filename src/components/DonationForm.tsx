@@ -20,9 +20,25 @@ const donationSchema = yup.object({
   description: yup.string().optional(),
   proofOfPayment: yup.mixed().required('Bukti pembayaran wajib diupload'),
   supportingDocuments: yup.mixed().optional(),
-}).required();
+});
 
-type DonationFormData = yup.InferType<typeof donationSchema>;
+// Explicit type definition to avoid Yup inference issues
+interface DonationFormData {
+  donorName: string;
+  donorEmail: string;
+  donorPhone: string;
+  donorAddress: string;
+  donorType: string;
+  recipient: string;
+  amount: number;
+  paymentMethod: string;
+  donationDate: Date;
+  description?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  proofOfPayment: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  supportingDocuments?: any;
+}
 
 interface DonationFormProps {
   onSubmit: (data: DonationFormData) => void;
@@ -43,7 +59,8 @@ const DonationForm: React.FC<DonationFormProps> = ({ onSubmit, onCancel, isLoadi
     setValue,
     trigger
   } = useForm<DonationFormData>({
-    resolver: yupResolver(donationSchema),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    resolver: yupResolver(donationSchema) as any,
     mode: 'onChange'
   });
 
@@ -104,7 +121,8 @@ const DonationForm: React.FC<DonationFormProps> = ({ onSubmit, onCancel, isLoadi
 
   const nextStep = async () => {
     const fieldsToValidate = getFieldsForStep(currentStep);
-    const isValidStep = await trigger(fieldsToValidate);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const isValidStep = await trigger(fieldsToValidate as any);
     
     if (isValidStep && currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
@@ -228,7 +246,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ onSubmit, onCancel, isLoadi
                   placeholder="Masukkan nama donor"
                 />
                 {errors.donorName && (
-                  <p className="mt-1 text-sm text-red-600">{errors.donorName.message}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.donorName.message?.toString()}</p>
                 )}
               </div>
 
@@ -245,7 +263,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ onSubmit, onCancel, isLoadi
                   placeholder="email@example.com"
                 />
                 {errors.donorEmail && (
-                  <p className="mt-1 text-sm text-red-600">{errors.donorEmail.message}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.donorEmail.message?.toString()}</p>
                 )}
               </div>
 
@@ -262,7 +280,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ onSubmit, onCancel, isLoadi
                   placeholder="08123456789"
                 />
                 {errors.donorPhone && (
-                  <p className="mt-1 text-sm text-red-600">{errors.donorPhone.message}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.donorPhone.message?.toString()}</p>
                 )}
               </div>
 
@@ -295,7 +313,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ onSubmit, onCancel, isLoadi
                   })}
                 </div>
                 {errors.donorType && (
-                  <p className="mt-1 text-sm text-red-600">{errors.donorType.message}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.donorType.message?.toString()}</p>
                 )}
               </div>
             </div>
@@ -313,7 +331,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ onSubmit, onCancel, isLoadi
                 placeholder="Masukkan alamat lengkap"
               />
               {errors.donorAddress && (
-                <p className="mt-1 text-sm text-red-600">{errors.donorAddress.message}</p>
+                                  <p className="mt-1 text-sm text-red-600">{errors.donorAddress.message?.toString()}</p>
               )}
             </div>
           </div>
@@ -342,7 +360,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ onSubmit, onCancel, isLoadi
                   ))}
                 </select>
                 {errors.recipient && (
-                  <p className="mt-1 text-sm text-red-600">{errors.recipient.message}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.recipient.message?.toString()}</p>
                 )}
               </div>
 
@@ -364,7 +382,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ onSubmit, onCancel, isLoadi
                   />
                 </div>
                 {errors.amount && (
-                  <p className="mt-1 text-sm text-red-600">{errors.amount.message}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.amount.message?.toString()}</p>
                 )}
               </div>
 
@@ -397,7 +415,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ onSubmit, onCancel, isLoadi
                   })}
                 </div>
                 {errors.paymentMethod && (
-                  <p className="mt-1 text-sm text-red-600">{errors.paymentMethod.message}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.paymentMethod.message?.toString()}</p>
                 )}
               </div>
 
@@ -413,7 +431,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ onSubmit, onCancel, isLoadi
                   }`}
                 />
                 {errors.donationDate && (
-                  <p className="mt-1 text-sm text-red-600">{errors.donationDate.message}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.donationDate.message?.toString()}</p>
                 )}
               </div>
             </div>
@@ -486,7 +504,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ onSubmit, onCancel, isLoadi
                   )}
                 </div>
                 {errors.proofOfPayment && (
-                  <p className="mt-1 text-sm text-red-600">{errors.proofOfPayment.message}</p>
+                  <p className="mt-1 text-sm text-red-600">{errors.proofOfPayment.message?.toString()}</p>
                 )}
               </div>
 

@@ -1,5 +1,6 @@
 'use client';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import { ZoomIn, ZoomOut, RotateCcw, Filter, Download, Info, BarChart3, X } from 'lucide-react';
@@ -105,8 +106,11 @@ const NetworkViewPage: React.FC = () => {
         .id(d => d.id)
         .distance(d => {
           // Dynamic distance based on node types and amounts
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const sourceNode = sampleNodes.find(n => n.id === (d.source as any).id || n.id === d.source);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const targetNode = sampleNodes.find(n => n.id === (d.target as any).id || n.id === d.target);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           if ((sourceNode as any)?.type === 'candidate' || (targetNode as any)?.type === 'candidate') {
             return 180; // More space around candidates
           }
@@ -117,8 +121,9 @@ const NetworkViewPage: React.FC = () => {
       .force('charge', d3.forceManyBody()
         .strength(d => {
           // Stronger repulsion for candidates and important nodes
-          if (d.type === 'candidate') return -1000;
-          if (d.type === 'party') return -700;
+          const node = d as NetworkNode;
+          if (node.type === 'candidate') return -1000;
+          if (node.type === 'party') return -700;
           return -600;
         })
         .distanceMax(400) // Increased repulsion distance
@@ -127,8 +132,9 @@ const NetworkViewPage: React.FC = () => {
       .force('collision', d3.forceCollide()
         .radius(d => {
           // Collision radius based on node size with more spacing
-          if (d.type === 'candidate') return 45;
-          return Math.min(Math.max(Math.sqrt((d.amount || 0) / 1000000) + 25, 30), 50);
+          const node = d as NetworkNode;
+          if (node.type === 'candidate') return 45;
+          return Math.min(Math.max(Math.sqrt((node.amount || 0) / 1000000) + 25, 30), 50);
         })
         .strength(0.9) // Strong collision avoidance
       )
@@ -306,9 +312,11 @@ const NetworkViewPage: React.FC = () => {
        clickedNode
          .transition()
          .duration(150)
+         // eslint-disable-next-line @typescript-eslint/no-explicit-any
          .attr('transform', (d: any) => `translate(${d.x}, ${d.y}) scale(1.1)`)
          .transition()
          .duration(150)
+         // eslint-disable-next-line @typescript-eslint/no-explicit-any
          .attr('transform', (d: any) => `translate(${d.x}, ${d.y}) scale(1)`);
        
        setSelectedNode(d);
@@ -352,15 +360,17 @@ const NetworkViewPage: React.FC = () => {
        // Highlight connected edges
        connectedEdges.forEach(edge => {
          const edgeElement = g.selectAll('.links g')
-           .filter((d: any) => 
-             (d.source === edge.source && d.target === edge.target) ||
-             (d.source === edge.target && d.target === edge.source)
-           );
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+         .filter((d: any) => 
+           (d.source === edge.source && d.target === edge.target) ||
+           (d.source === edge.target && d.target === edge.source)
+         );
          
          edgeElement
            .transition()
            .duration(300)
            .style('opacity', 1)
+           // eslint-disable-next-line @typescript-eslint/no-explicit-any
            .style('stroke-width', (d: any) => Math.sqrt(d.amount / 10000000) + 4);
        });
      });

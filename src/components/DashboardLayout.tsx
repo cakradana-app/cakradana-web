@@ -4,6 +4,14 @@ import { usePathname } from 'next/navigation';
 import Header from './Header';
 import Sidebar from './Sidebar';
 
+// Chart.js type declaration
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Chart: any;
+  }
+}
+
 
 // Export the existing dashboard page content for use in dashboard page
 export const DashboardContent = () => {
@@ -65,7 +73,7 @@ export const DashboardContent = () => {
   React.useEffect(() => {
     if (chartsLoaded && doughnutChartRef.current && lineChartRef.current) {
       const doughnutCtx = doughnutChartRef.current.getContext('2d');
-      new (window as unknown as { Chart: typeof Chart }).Chart(doughnutCtx, {
+      new window.Chart(doughnutCtx, {
         type: 'doughnut',
         data: {
           labels: ['Low Risk', 'Medium Risk', 'High Risk'],
@@ -92,7 +100,7 @@ export const DashboardContent = () => {
       });
 
       const lineCtx = lineChartRef.current.getContext('2d');
-      new (window as unknown as { Chart: typeof Chart }).Chart(lineCtx, {
+      new window.Chart(lineCtx, {
         type: 'line',
         data: {
           labels: ['Q1', 'Q2', 'Q3'],

@@ -247,7 +247,7 @@ const DonationsAnalytics = ({ donations }: DonationsAnalyticsProps) => {
                   outerRadius={80}
                   fill="#8884d8"
                   dataKey="value"
-                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
                 >
                   {mockupData.statusData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
@@ -288,7 +288,7 @@ const DonationsAnalytics = ({ donations }: DonationsAnalyticsProps) => {
                   outerRadius={80}
                   fill="#8884d8"
                   dataKey="value"
-                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
                 >
                   {mockupData.sourceData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
@@ -313,7 +313,7 @@ const DonationsAnalytics = ({ donations }: DonationsAnalyticsProps) => {
                   outerRadius={80}
                   fill="#8884d8"
                   dataKey="value"
-                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
                 >
                   {mockupData.donorTypeData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
