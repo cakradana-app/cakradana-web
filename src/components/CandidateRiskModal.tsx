@@ -1,6 +1,6 @@
 'use client';
 
-import { X, AlertTriangle, Download, TrendingUp, TrendingDown, Shield } from 'lucide-react';
+import { X, AlertTriangle, Download } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -21,20 +21,7 @@ interface Candidate {
   avatarSeed: string;
 }
 
-interface RiskFactor {
-  name: string;
-  score: number;
-  impact: 'low' | 'medium' | 'high';
-}
 
-interface RiskTransaction {
-  id: number;
-  date: string;
-  amount: number;
-  donor: string;
-  risk: 'low' | 'medium' | 'high';
-  status: 'confirmed' | 'flagged' | 'pending';
-}
 
 interface RiskModalProps {
   candidate: Candidate | null;

@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Search, Bell, User, Home, Network, FileText, AlertTriangle, Upload, Users, BarChart3, Clock, TrendingUp, TrendingDown } from 'lucide-react';
+import { Search, Home, Network, FileText, AlertTriangle, Upload, Users, BarChart3 } from 'lucide-react';
 
 interface SidebarProps {
   activePage?: string;

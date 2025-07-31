@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Upload, X, CheckCircle, AlertCircle, User, Building, Users, DollarSign, Calendar, FileText, CreditCard, Banknote } from 'lucide-react';
+import { Upload, X, CheckCircle, User, Building, Users, DollarSign, FileText, CreditCard, Banknote } from 'lucide-react';
 
 // Validation schema
 const donationSchema = yup.object({
@@ -156,11 +156,7 @@ const DonationForm: React.FC<DonationFormProps> = ({ onSubmit, onCancel, isLoadi
     }
   };
 
-  const isStepValid = async (step: number) => {
-    const fields = getFieldsForStep(step);
-    const result = await trigger(fields);
-    return result;
-  };
+
 
   return (
     <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl">

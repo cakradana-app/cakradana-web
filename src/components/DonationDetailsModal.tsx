@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { 
-  X, Edit, Trash2, Download, Share2, Flag, CheckCircle, AlertCircle, Clock,
+  X, Edit, Trash2, Download, Share2, CheckCircle, AlertCircle, Clock,
   User, Building, Users, Calendar, DollarSign, FileText, Copy, ExternalLink,
   History, TrendingUp, Shield, AlertTriangle, Eye, EyeOff
 } from 'lucide-react';

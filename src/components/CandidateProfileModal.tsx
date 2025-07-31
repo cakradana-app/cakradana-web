@@ -1,7 +1,6 @@
 'use client';
 
 import { X, Mail, Phone, MapPin, Calendar, Edit, Upload } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 

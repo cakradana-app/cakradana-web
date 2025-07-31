@@ -65,7 +65,7 @@ export const DashboardContent = () => {
   React.useEffect(() => {
     if (chartsLoaded && doughnutChartRef.current && lineChartRef.current) {
       const doughnutCtx = doughnutChartRef.current.getContext('2d');
-      new (window as any).Chart(doughnutCtx, {
+      new (window as unknown as { Chart: typeof Chart }).Chart(doughnutCtx, {
         type: 'doughnut',
         data: {
           labels: ['Low Risk', 'Medium Risk', 'High Risk'],
@@ -92,7 +92,7 @@ export const DashboardContent = () => {
       });
 
       const lineCtx = lineChartRef.current.getContext('2d');
-      new (window as any).Chart(lineCtx, {
+      new (window as unknown as { Chart: typeof Chart }).Chart(lineCtx, {
         type: 'line',
         data: {
           labels: ['Q1', 'Q2', 'Q3'],

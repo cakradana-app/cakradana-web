@@ -2,15 +2,13 @@
 
 import { useState, useMemo } from 'react';
 import { 
-  AlertTriangle, Shield, TrendingUp, TrendingDown, 
-  Filter, Search, Download, Eye, BarChart3, 
-  PieChart, Activity, Target, CheckCircle, Clock, XCircle 
+  AlertTriangle, Shield, 
+  Search, Download, Eye, 
+  Activity, Target, CheckCircle, Clock
 } from 'lucide-react';
 import DashboardLayout from '@/components/DashboardLayout';
 import {
   ResponsiveContainer,
-  BarChart,
-  Bar,
   LineChart,
   Line,
   PieChart as RechartsPieChart,
@@ -19,10 +17,7 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
-  Legend,
-  AreaChart,
-  Area
+  Tooltip
 } from 'recharts';
 
 

@@ -1,12 +1,9 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { 
-  TrendingUp, TrendingDown, DollarSign, Users, Calendar, 
-  BarChart3, PieChart, Activity, Target, AlertTriangle,
-  CheckCircle, Clock, XCircle, Eye, Download, Filter,
-  ChevronUp, ChevronDown, ArrowUpRight, ArrowDownRight,
-  RefreshCw, FileText, Share2, Trophy, Medal, Award
+  TrendingUp, 
+  RefreshCw, Trophy, Medal, Award, Download
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -21,7 +18,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   AreaChart,
   Area
 } from 'recharts';
@@ -114,8 +110,7 @@ const topRecipientsData = [
   { rank: 3, name: 'Anies Baswedan', totalAmount: 396405204, donations: 1 }
 ];
 
-const DonationsAnalytics = ({ donations, onViewDetails }: DonationsAnalyticsProps) => {
-  const [selectedPeriod, setSelectedPeriod] = useState('30d');
+const DonationsAnalytics = ({ donations }: DonationsAnalyticsProps) => {
   const [chartType, setChartType] = useState<'amount' | 'count'>('amount');
   const [isRefreshing, setIsRefreshing] = useState(false);
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { X, Eye, CheckCircle, Flag, Plus, Download, Eye as EyeIcon } from 'lucide-react';
+import { X, CheckCircle, Flag, Plus, Download, Eye } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -172,7 +172,7 @@ export default function CandidateHistoryModal({
                         <td className="px-4 py-3">
                           <div className="flex space-x-2">
                             <button className="text-blue-600 hover:text-blue-800" title="View Details">
-                              <EyeIcon className="h-4 w-4" />
+                              <Eye className="h-4 w-4" />
                             </button>
                             {donation.status === 'pending' && (
                               <button className="text-green-600 hover:text-green-800" title="Confirm">

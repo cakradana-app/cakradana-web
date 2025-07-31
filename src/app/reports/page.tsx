@@ -2,15 +2,13 @@
 
 import { useState, useMemo } from 'react';
 import { 
-  FileText, Download, Filter, Search, Calendar, 
-  TrendingUp, TrendingDown, BarChart3, PieChart, Activity,
-  Eye, Share2, Printer, Mail, AlertTriangle, CheckCircle
+  FileText, Download, Search, 
+  TrendingUp, BarChart3, PieChart, Activity,
+  Eye, Share2, Printer, AlertTriangle, CheckCircle
 } from 'lucide-react';
 import DashboardLayout from '@/components/DashboardLayout';
 import {
   ResponsiveContainer,
-  BarChart,
-  Bar,
   LineChart,
   Line,
   PieChart as RechartsPieChart,
@@ -19,10 +17,7 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
-  Legend,
-  AreaChart,
-  Area
+  Tooltip
 } from 'recharts';
 
 
