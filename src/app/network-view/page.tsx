@@ -433,9 +433,9 @@ const NetworkViewPage: React.FC = () => {
     };
 
     // Expose zoom functions to the component
-    (window as any).networkZoomIn = handleZoomIn;
-    (window as any).networkZoomOut = handleZoomOut;
-    (window as any).networkReset = handleReset;
+    (window as unknown as { networkZoomIn: typeof handleZoomIn }).networkZoomIn = handleZoomIn;
+    (window as unknown as { networkZoomOut: typeof handleZoomOut }).networkZoomOut = handleZoomOut;
+    (window as unknown as { networkReset: typeof handleReset }).networkReset = handleReset;
 
     return () => {
       simulation.stop();
@@ -443,15 +443,15 @@ const NetworkViewPage: React.FC = () => {
   }, []);
 
   const handleZoomIn = () => {
-    (window as any).networkZoomIn?.();
+    (window as unknown as { networkZoomIn?: () => void }).networkZoomIn?.();
   };
 
   const handleZoomOut = () => {
-    (window as any).networkZoomOut?.();
+    (window as unknown as { networkZoomOut?: () => void }).networkZoomOut?.();
   };
 
      const handleReset = () => {
-     (window as any).networkReset?.();
+     (window as unknown as { networkReset?: () => void }).networkReset?.();
    };
 
    // Handle keyboard events for popup with enhanced navigation

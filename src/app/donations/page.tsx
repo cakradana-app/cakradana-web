@@ -8,8 +8,24 @@ import DonationsTable from '@/components/DonationsTable';
 import DonationDetailsModal from '@/components/DonationDetailsModal';
 import DonationsAnalytics from '@/components/DonationsAnalytics';
 
+// Define the donation type
+interface Donation {
+  id: number;
+  date: string;
+  donor: {
+    name: string;
+    type: 'individual' | 'company' | 'party';
+  };
+  recipient: string;
+  amount: number;
+  source: string;
+  risk: 'Low' | 'Medium' | 'High';
+  status: 'Confirmed' | 'Flagged' | 'Pending';
+  campaign: string;
+}
+
 // Sample data based on the screenshot
-const sampleDonations = [
+const sampleDonations: Donation[] = [
   {
     id: 1,
     date: '22 Jan 2025',
@@ -86,7 +102,7 @@ const DonationsContent = () => {
     console.log('Form submitted:', data);
     
     // Add new donation to the list (in real app, this would be an API call)
-    const newDonation = {
+    const newDonation: Donation = {
       id: donations.length + 1,
       date: new Date(data.donationDate as string).toLocaleDateString('en-GB', {
         day: '2-digit',
@@ -95,7 +111,7 @@ const DonationsContent = () => {
       }),
       donor: { 
         name: data.donorName as string, 
-        type: data.donorType as string 
+        type: (data.donorType as string) as 'individual' | 'company' | 'party'
       },
       recipient: data.recipient as string,
       amount: data.amount as number,
