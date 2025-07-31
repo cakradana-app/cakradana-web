@@ -1,19 +1,36 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, Bell, User, Home, Network, FileText, AlertTriangle, Upload, Users, BarChart3, Clock, TrendingUp, TrendingDown } from 'lucide-react';
 
-const Sidebar = () => {
-  const [activeItem, setActiveItem] = useState('Dashboard');
+interface SidebarProps {
+  activePage?: string;
+  onPageChange?: (page: string) => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ activePage = 'Dashboard', onPageChange }) => {
+  const [activeItem, setActiveItem] = useState(activePage);
+
+  // Update activeItem when activePage prop changes
+  useEffect(() => {
+    setActiveItem(activePage);
+  }, [activePage]);
 
   const menuItems = [
-    { name: 'Dashboard', icon: Home, active: true },
-    { name: 'Network View', icon: Network },
-    { name: 'Donations', icon: FileText },
-    { name: 'Risk Analysis', icon: AlertTriangle },
-    { name: 'Upload Data', icon: Upload },
-    { name: 'Candidates', icon: Users },
-    { name: 'Reports', icon: BarChart3 }
+    { name: 'Dashboard', icon: Home, path: 'dashboard' },
+    { name: 'Network View', icon: Network, path: 'network-view' },
+    { name: 'Donations', icon: FileText, path: 'donations' },
+    { name: 'Risk Analysis', icon: AlertTriangle, path: 'risk-analysis' },
+    { name: 'Upload Data', icon: Upload, path: 'upload' },
+    { name: 'Candidates', icon: Users, path: 'candidates' },
+    { name: 'Reports', icon: BarChart3, path: 'reports' }
   ];
+
+  const handleItemClick = (itemName: string, path: string) => {
+    setActiveItem(itemName);
+    if (onPageChange) {
+      onPageChange(path);
+    }
+  };
 
   return (
     <aside className="w-64 bg-white border-r border-gray-200 flex flex-col overflow-y-auto">
@@ -36,7 +53,7 @@ const Sidebar = () => {
             return (
               <button
                 key={item.name}
-                onClick={() => setActiveItem(item.name)}
+                onClick={() => handleItemClick(item.name, item.path)}
                 className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-colors ${
                   isActive
                     ? 'text-blue-700 font-medium'
