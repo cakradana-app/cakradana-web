@@ -156,7 +156,7 @@ export const DashboardContent = () => {
               },
               ticks: {
                 color: '#6b7280',
-                callback: function(value: any) {
+                callback: function(value: number) {
                   return value + 'M';
                 }
               },

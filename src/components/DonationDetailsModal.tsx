@@ -138,7 +138,7 @@ const DonationDetailsModal: React.FC<DonationDetailsModalProps> = ({
             ].map((tab) => {
               const TabIcon = tab.icon;
               return (
-                <button key={tab.id} onClick={() => setActiveTab(tab.id as any)} className={`flex items-center space-x-2 px-3 py-2 rounded-md font-medium transition-colors ${
+                <button key={tab.id} onClick={() => setActiveTab(tab.id as 'details' | 'timeline' | 'analytics')} className={`flex items-center space-x-2 px-3 py-2 rounded-md font-medium transition-colors ${
                   activeTab === tab.id ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                 }`}>
                   <TabIcon className="h-4 w-4" />

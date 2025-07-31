@@ -25,6 +25,7 @@ import {
   Area
 } from 'recharts';
 
+
 interface ReportData {
   id: string;
   title: string;
@@ -95,7 +96,7 @@ export default function ReportsPage() {
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
   const [selectedFormat, setSelectedFormat] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
-  const [dateRange, setDateRange] = useState('30d');
+
 
   const filteredReports = useMemo(() => {
     return mockReports.filter(report => {

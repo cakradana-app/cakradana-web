@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Search, Eye, Edit, Trash2, BarChart3, List, Plus } from 'lucide-react';
+import { BarChart3, List, Plus } from 'lucide-react';
 import DashboardLayout from '@/components/DashboardLayout';
 import DonationForm from '@/components/DonationForm';
 import DonationsTable from '@/components/DonationsTable';
@@ -67,68 +67,17 @@ const sampleDonations = [
   }
 ];
 
-// Helper function to format currency
-const formatCurrency = (amount: number) => {
-  return new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  }).format(amount);
-};
 
-// Helper function to get status color
-const getStatusColor = (status: string) => {
-  switch (status) {
-    case 'Confirmed':
-      return 'bg-green-100 text-green-800';
-    case 'Flagged':
-      return 'bg-red-100 text-red-800';
-    case 'Pending':
-      return 'bg-gray-100 text-gray-800';
-    default:
-      return 'bg-gray-100 text-gray-800';
-  }
-};
-
-// Helper function to get risk color
-const getRiskColor = (risk: string) => {
-  switch (risk) {
-    case 'Low':
-      return 'bg-green-100 text-green-800';
-    case 'Medium':
-      return 'bg-yellow-100 text-yellow-800';
-    case 'High':
-      return 'bg-red-100 text-red-800';
-    default:
-      return 'bg-gray-100 text-gray-800';
-  }
-};
-
-// Helper function to get source color
-const getSourceColor = (source: string) => {
-  switch (source) {
-    case 'Web Scrape':
-      return 'bg-green-100 text-green-800';
-    case 'Digital Form':
-      return 'bg-blue-100 text-blue-800';
-    case 'Paper (OCR)':
-      return 'bg-yellow-100 text-yellow-800';
-    default:
-      return 'bg-gray-100 text-gray-800';
-  }
-};
 
 // Donations Content Component
 const DonationsContent = () => {
-  const [searchTerm, setSearchTerm] = useState('');
   const [selectedDonation, setSelectedDonation] = useState<any>(null);
   const [showDonationForm, setShowDonationForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [donations, setDonations] = useState(sampleDonations);
   const [activeTab, setActiveTab] = useState<'list' | 'analytics'>('list');
 
-  const handleFormSubmit = async (data: any) => {
+  const handleFormSubmit = async (data: Record<string, unknown>) => {
     setIsSubmitting(true);
     
     // Simulate API call
@@ -139,21 +88,21 @@ const DonationsContent = () => {
     // Add new donation to the list (in real app, this would be an API call)
     const newDonation = {
       id: donations.length + 1,
-      date: new Date(data.donationDate).toLocaleDateString('en-GB', {
+      date: new Date(data.donationDate as string).toLocaleDateString('en-GB', {
         day: '2-digit',
         month: 'short',
         year: 'numeric'
       }),
       donor: { 
-        name: data.donorName, 
-        type: data.donorType 
+        name: data.donorName as string, 
+        type: data.donorType as string 
       },
-      recipient: data.recipient,
-      amount: data.amount,
+      recipient: data.recipient as string,
+      amount: data.amount as number,
       source: 'Digital Form',
       risk: 'Low', // Default risk, would be calculated based on business logic
       status: 'Pending',
-      campaign: data.campaign || 'General Campaign'
+      campaign: (data.campaign as string) || 'General Campaign'
     };
     
     // Add to state

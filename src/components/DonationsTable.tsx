@@ -119,7 +119,7 @@ const DonationsTable: React.FC<DonationsTableProps> = ({
 
   // Filter and sort data
   const filteredAndSortedData = useMemo(() => {
-    let filtered = donations.filter(donation => {
+    const filtered = donations.filter(donation => {
       const matchesSearch = 
         donation.donor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         donation.recipient.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -135,7 +135,7 @@ const DonationsTable: React.FC<DonationsTableProps> = ({
 
     // Sort data
     filtered.sort((a, b) => {
-      let aValue: any, bValue: any;
+      let aValue: string | number | Date, bValue: string | number | Date;
 
       switch (sortField) {
         case 'date':
