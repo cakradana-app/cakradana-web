@@ -5,9 +5,11 @@ import { Button } from '@/components/ui/button';
 import { FiArrowRight, FiArrowUpRight } from 'react-icons/fi';
 import { animations, createTimeline } from '@/lib/gsap-utils';
 import VideoDemo from './VideoDemo';
+import { useRouter } from 'next/navigation';
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     // Animate hero elements on mount
@@ -57,6 +59,7 @@ export default function HeroSection() {
           <Button
             size="lg"
             className="bg-accent-one hover:bg-primary/90 text-white px-6 md:px-8 py-3 text-base md:text-lg rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+            onClick={() => router.push('/dashboard')}
           >
             Coba Sekarang
             <FiArrowUpRight className="w-4 h-4 md:w-5 md:h-5 ml-2 stroke-[2px]" />

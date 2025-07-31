@@ -16,7 +16,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-64 bg-white border-r border-gray-200 sticky top-[73px] h-[calc(100vh-73px)] flex flex-col">
+    <aside className="w-64 bg-white border-r border-gray-200 flex flex-col overflow-y-auto">
       <div className="flex-1 p-4">
         <div className="mb-6">
           <div className="relative">

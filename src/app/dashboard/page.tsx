@@ -201,11 +201,11 @@ const Page = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="flex flex-col h-screen bg-gray-50">
       <Header />
-      <div className="flex">
+      <div className="flex flex-1 overflow-hidden">
         <Sidebar />
-        <div className="flex-1 p-6 bg-gray-50">
+        <div className="flex-1 p-6 bg-gray-50 overflow-auto">
           <div className="max-w-7xl mx-auto">
             <div className="mb-6">
               <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
