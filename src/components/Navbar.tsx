@@ -113,7 +113,7 @@ export default function Navbar() {
               variant="ghost"
               size="default"
               className="text-white hover:text-white hover:bg-accent-one px-3 lg:px-6 py-3 lg:py-5 rounded-full text-sm lg:text-base"
-              onClick={() => router.push('/dashboard')}
+              onClick={() => router.push('/login')}
             >
               <span>Login</span>
             </Button>
@@ -182,7 +182,7 @@ export default function Navbar() {
                   className="text-gray-600 hover:text-primary hover:bg-primary/10 py-3 rounded-full w-full"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    router.push('/dashboard');
+                    router.push('/login');
                   }}
                 >
                   Login
