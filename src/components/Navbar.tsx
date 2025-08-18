@@ -110,7 +110,7 @@ export default function Navbar() {
             <Button
               variant="ghost"
               size="default"
-              className="text-white hover:text-white hover:bg-primary px-3 lg:px-6 py-3 lg:py-5 rounded-full text-sm lg:text-base"
+              className="text-white hover:text-white hover:bg-accent-one px-3 lg:px-6 py-3 lg:py-5 rounded-full text-sm lg:text-base"
             >
               <span>Login</span>
             </Button>
