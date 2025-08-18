@@ -110,14 +110,14 @@ export default function Navbar() {
             <Button
               variant="ghost"
               size="default"
-              className="text-white hover:text-white hover:bg-gray-800 px-3 lg:px-6 py-3 lg:py-5 rounded-full text-sm lg:text-base"
+              className="text-white hover:text-white hover:bg-primary px-3 lg:px-6 py-3 lg:py-5 rounded-full text-sm lg:text-base"
             >
               <span>Login</span>
             </Button>
             
             <Button
               size="default"
-              className="bg-white hover:bg-gray-800 text-[#1A2F4B] hover:text-white flex items-center space-x-1 lg:space-x-2 px-3 lg:px-6 py-3 lg:py-5 rounded-full group text-sm lg:text-base"
+              className="bg-white hover:bg-primary text-[#1A2F4B] hover:text-white flex items-center space-x-1 lg:space-x-2 px-3 lg:px-6 py-3 lg:py-5 rounded-full group text-sm lg:text-base"
               onMouseEnter={(e) => {
                 const icon = e.currentTarget.querySelector('[data-search-icon]') as HTMLElement;
                 if (icon && 'startAnimation' in icon) {
