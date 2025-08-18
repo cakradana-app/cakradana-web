@@ -95,7 +95,7 @@ export default function Footer() {
                   <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mr-3 group-hover:bg-white/20 transition-colors">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <span>contact@cakradana.id</span>
+                  <span>contact@cakradana.org</span>
                 </div>
                 <div className="flex items-center text-white hover:text-gray-200 transition-colors group">
                   <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mr-3 group-hover:bg-white/20 transition-colors">

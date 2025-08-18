@@ -8,11 +8,13 @@ import { SearchIcon } from '@/components/ui/search-icon';
 import { animations } from '@/lib/gsap-utils';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     // Register ScrollTrigger plugin
@@ -111,6 +113,7 @@ export default function Navbar() {
               variant="ghost"
               size="default"
               className="text-white hover:text-white hover:bg-accent-one px-3 lg:px-6 py-3 lg:py-5 rounded-full text-sm lg:text-base"
+              onClick={() => router.push('/dashboard')}
             >
               <span>Login</span>
             </Button>
@@ -118,6 +121,7 @@ export default function Navbar() {
             <Button
               size="default"
               className="bg-white hover:bg-primary text-[#1A2F4B] hover:text-white flex items-center space-x-1 lg:space-x-2 px-3 lg:px-6 py-3 lg:py-5 rounded-full group text-sm lg:text-base"
+              onClick={() => router.push('/dashboard')}
               onMouseEnter={(e) => {
                 const icon = e.currentTarget.querySelector('[data-search-icon]') as HTMLElement;
                 if (icon && 'startAnimation' in icon) {
@@ -176,7 +180,10 @@ export default function Navbar() {
                   variant="ghost"
                   size="default"
                   className="text-gray-600 hover:text-primary hover:bg-primary/10 py-3 rounded-full w-full"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    router.push('/dashboard');
+                  }}
                 >
                   Login
                 </Button>
@@ -184,7 +191,10 @@ export default function Navbar() {
                 <Button
                   size="default"
                   className="bg-white hover:bg-primary/90 text-primary flex items-center justify-center space-x-2 py-3 rounded-full w-full"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    router.push('/dashboard');
+                  }}
                 >
                   <span>Explore Now</span>
                   <SearchIcon size={16} />
