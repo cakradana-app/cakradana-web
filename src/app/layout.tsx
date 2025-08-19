@@ -35,7 +35,6 @@ export const metadata: Metadata = {
     "Deteksi Anomali AI",
   ],
   authors: [{ name: "Tim Cakradana" }],
-  viewport: "width=device-width, initial-scale=1.0",
   robots: "index, follow",
   openGraph: {
     title: "Cakradana | Transparansi Pembiayaan Pemilu di Indonesia",
@@ -53,6 +52,11 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -61,7 +65,6 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
           content={metadata.description || ""}

@@ -1,7 +1,7 @@
 'use client';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import * as d3 from 'd3';
 import { ZoomIn, ZoomOut, RotateCcw, Filter, Download, Info, BarChart3, X } from 'lucide-react';
 import DashboardLayout from '@/components/DashboardLayout';
@@ -33,7 +33,7 @@ const NetworkViewPage: React.FC = () => {
   const [patternSize, setPatternSize] = useState(20);
 
   // Sample data for MVP
-  const sampleNodes: NetworkNode[] = [
+  const sampleNodes: NetworkNode[] = useMemo(() => [
     { id: '1', name: 'Citra Wijaya', type: 'individual', amount: 196541744, risk: 'low' },
     { id: '2', name: 'Eko Prasetyo', type: 'individual', amount: 96535744, risk: 'high' },
     { id: '3', name: 'PT Maju Jaya', type: 'company', amount: 396405204, risk: 'low' },
@@ -42,15 +42,15 @@ const NetworkViewPage: React.FC = () => {
     { id: '6', name: 'Ganjar Pranowo', type: 'candidate', amount: 0, risk: 'low' },
     { id: '7', name: 'Prabowo Subianto', type: 'candidate', amount: 0, risk: 'low' },
     { id: '8', name: 'Anies Baswedan', type: 'candidate', amount: 0, risk: 'low' },
-  ];
+  ], []);
 
-  const sampleEdges: NetworkEdge[] = [
+  const sampleEdges: NetworkEdge[] = useMemo(() => [
     { source: '1', target: '6', amount: 196541744, date: '2024-01-15' },
     { source: '2', target: '6', amount: 96535744, date: '2024-01-20' },
     { source: '3', target: '7', amount: 396405204, date: '2024-01-25' },
     { source: '4', target: '7', amount: 26400000, date: '2024-02-01' },
     { source: '5', target: '8', amount: 111111111, date: '2024-02-05' },
-  ];
+  ], []);
 
   useEffect(() => {
     if (!svgRef.current || !gRef.current) return;
@@ -309,11 +309,9 @@ const NetworkViewPage: React.FC = () => {
        clickedNode
          .transition()
          .duration(150)
-         // eslint-disable-next-line @typescript-eslint/no-explicit-any
          .attr('transform', (d: any) => `translate(${d.x}, ${d.y}) scale(1.1)`)
          .transition()
          .duration(150)
-         // eslint-disable-next-line @typescript-eslint/no-explicit-any
          .attr('transform', (d: any) => `translate(${d.x}, ${d.y}) scale(1)`);
        
        setSelectedNode(d);
@@ -357,7 +355,6 @@ const NetworkViewPage: React.FC = () => {
        // Highlight connected edges
        connectedEdges.forEach(edge => {
          const edgeElement = g.selectAll('.links g')
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
          .filter((d: any) => 
            (d.source === edge.source && d.target === edge.target) ||
            (d.source === edge.target && d.target === edge.source)
@@ -367,7 +364,6 @@ const NetworkViewPage: React.FC = () => {
            .transition()
            .duration(300)
            .style('opacity', 1)
-           // eslint-disable-next-line @typescript-eslint/no-explicit-any
            .style('stroke-width', (d: any) => Math.sqrt(d.amount / 10000000) + 4);
        });
      });
@@ -447,7 +443,7 @@ const NetworkViewPage: React.FC = () => {
     return () => {
       simulation.stop();
     };
-  }, []);
+  }, [sampleNodes, sampleEdges]);
 
   const handleZoomIn = () => {
     (window as unknown as { networkZoomIn?: () => void }).networkZoomIn?.();
@@ -533,7 +529,7 @@ const NetworkViewPage: React.FC = () => {
      return () => {
        document.removeEventListener('keydown', handleKeyDown);
      };
-   }, [showNodeDetail, selectedNode]);
+   }, [showNodeDetail, selectedNode, sampleEdges, sampleNodes]);
 
    // Reset node opacity when popup is closed
    useEffect(() => {
