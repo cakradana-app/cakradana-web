@@ -179,58 +179,60 @@ const DonationsAnalytics = ({ donations }: DonationsAnalyticsProps) => {
 
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-lg border border-gray-200">
-          <div className="flex items-center justify-between">
-            <div>
+        <div className="bg-white p-6 rounded-lg border border-gray-200 min-w-0 w-full">
+          <div className="flex items-start justify-between">
+            <div className="flex-1 min-w-0 pr-2">
               <p className="text-sm font-medium text-gray-600">Total Amount</p>
-              <p className="text-2xl font-bold text-gray-900">{formatCurrency(metrics.totalAmount)}</p>
+              <p className="text-xl font-bold text-gray-900 break-words">{formatCurrency(metrics.totalAmount)}</p>
             </div>
-            <div className="flex items-center text-green-600">
+            <div className="flex items-center text-green-600 ml-3 flex-shrink-0">
               <TrendingUp className="h-5 w-5" />
               <span className="text-sm font-medium ml-1">+12.5%</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg border border-gray-200">
-          <div className="flex items-center justify-between">
-            <div>
+        <div className="bg-white p-6 rounded-lg border border-gray-200 min-w-0 w-full">
+          <div className="flex items-start justify-between">
+            <div className="flex-1 min-w-0 pr-2">
               <p className="text-sm font-medium text-gray-600">Total Donations</p>
-              <p className="text-2xl font-bold text-gray-900">{metrics.totalDonations}</p>
+              <p className="text-xl font-bold text-gray-900">{metrics.totalDonations}</p>
             </div>
-            <div className="flex items-center text-green-600">
+            <div className="flex items-center text-green-600 ml-3 flex-shrink-0">
               <TrendingUp className="h-5 w-5" />
               <span className="text-sm font-medium ml-1">+8.2%</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg border border-gray-200">
-          <div className="flex items-center justify-between">
-            <div>
+        <div className="bg-white p-6 rounded-lg border border-gray-200 min-w-0 w-full">
+          <div className="flex items-start justify-between">
+            <div className="flex-1 min-w-0 pr-2">
               <p className="text-sm font-medium text-gray-600">Average Amount</p>
-              <p className="text-2xl font-bold text-gray-900">{formatCurrency(metrics.averageAmount)}</p>
+              <p className="text-xl font-bold text-gray-900 break-words">{formatCurrency(metrics.averageAmount)}</p>
             </div>
-            <div className="flex items-center text-green-600">
+            <div className="flex items-center text-green-600 ml-3 flex-shrink-0">
               <TrendingUp className="h-5 w-5" />
               <span className="text-sm font-medium ml-1">+5.7%</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg border border-gray-200">
-          <div className="flex items-center justify-between">
-            <div>
+        <div className="bg-white p-6 rounded-lg border border-gray-200 min-w-0 w-full">
+          <div className="flex items-start justify-between">
+            <div className="flex-1 min-w-0 pr-2">
               <p className="text-sm font-medium text-gray-600">Success Rate</p>
-              <p className="text-2xl font-bold text-gray-900">{metrics.successRate.toFixed(1)}%</p>
+              <p className="text-xl font-bold text-gray-900">{metrics.successRate.toFixed(1)}%</p>
             </div>
-            <div className="flex items-center text-green-600">
+            <div className="flex items-center text-green-600 ml-3 flex-shrink-0">
               <TrendingUp className="h-5 w-5" />
               <span className="text-sm font-medium ml-1">+2.1%</span>
             </div>
           </div>
         </div>
       </div>
+
+
 
       {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

@@ -17,7 +17,8 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip
+  Tooltip,
+  Legend
 } from 'recharts';
 
 
@@ -250,6 +251,13 @@ export default function ReportsPage() {
                   ))}
                 </Pie>
                 <Tooltip />
+                <Legend 
+                  verticalAlign="bottom" 
+                  height={36}
+                  formatter={(value, entry) => (
+                    <span style={{ color: '#374151' }}>{value}</span>
+                  )}
+                />
               </RechartsPieChart>
             </ResponsiveContainer>
           </div>
@@ -268,7 +276,20 @@ export default function ReportsPage() {
                 <XAxis dataKey="month" />
                 <YAxis />
                 <Tooltip />
-                <Line type="monotone" dataKey="reports" stroke="#3B82F6" strokeWidth={2} />
+                <Line 
+                  type="monotone" 
+                  dataKey="reports" 
+                  stroke="#3B82F6" 
+                  strokeWidth={2}
+                  name="Reports Generated"
+                />
+                <Legend 
+                  verticalAlign="bottom" 
+                  height={36}
+                  formatter={(value, entry) => (
+                    <span style={{ color: '#374151' }}>{value}</span>
+                  )}
+                />
               </LineChart>
             </ResponsiveContainer>
           </div>

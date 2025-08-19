@@ -447,7 +447,6 @@ interface DashboardLayoutProps {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const pathname = usePathname();
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
 
   
   // Determine active page based on current pathname
@@ -470,26 +469,12 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     return 'Dashboard'; // default
   };
 
-  const handlePageChange = async (path: string) => {
-    setIsLoading(true);
-    
-    // Use Next.js router for smooth navigation
-    try {
-      await router.push(`/${path}`);
-    } catch (error) {
-      console.error('Navigation error:', error);
-      // Fallback to window.location if router fails
-      window.location.href = `/${path}`;
-    } finally {
-      // Reset loading state after navigation
-      setTimeout(() => setIsLoading(false), 100);
-    }
+  const handlePageChange = (path: string) => {
+    // Use Next.js router for immediate navigation without loading state
+    router.push(`/${path}`);
   };
 
-  // Reset loading state when pathname changes (navigation completes)
-  React.useEffect(() => {
-    setIsLoading(false);
-  }, [pathname]);
+
 
   return (
     <div className="flex flex-col h-screen bg-gray-50">
@@ -498,7 +483,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         <Sidebar 
           activePage={getActivePage()}
           onPageChange={handlePageChange}
-          isLoading={isLoading}
         />
         {children}
       </div>

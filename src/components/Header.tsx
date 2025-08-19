@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Bell, User, Settings, LogOut } from 'lucide-react';
 import { getUserFromToken } from '@/lib/utils';
+import { useAuth } from '@/lib/auth-context';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,11 +17,17 @@ import {
 const Header = () => {
   const [notificationCount, setNotificationCount] = useState(3);
   const [userInfo, setUserInfo] = useState<{ name: string; type: string } | null>(null);
+  const { logout } = useAuth();
 
   useEffect(() => {
     const user = getUserFromToken();
     setUserInfo(user);
   }, []);
+
+  const handleLogout = () => {
+    logout();
+    // The logout function in auth-context already handles navigation to '/'
+  };
 
   const notifications = [
     {
@@ -151,7 +158,10 @@ const Header = () => {
                 <span>Pengaturan</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="flex items-center space-x-2 cursor-pointer text-red-600">
+              <DropdownMenuItem 
+                onClick={handleLogout}
+                className="flex items-center space-x-2 cursor-pointer text-red-600"
+              >
                 <LogOut className="w-4 h-4" />
                 <span>Keluar</span>
               </DropdownMenuItem>
