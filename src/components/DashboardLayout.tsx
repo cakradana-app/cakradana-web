@@ -1,8 +1,9 @@
 'use client';
 import React, { useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import { useSkeleton } from '@/lib/use-skeleton';
 
 // Chart.js type declaration
 declare global {
@@ -12,12 +13,13 @@ declare global {
   }
 }
 
-
 // Export the existing dashboard page content for use in dashboard page
 export const DashboardContent = () => {
   const [chartsLoaded, setChartsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const doughnutChartRef = React.useRef<HTMLCanvasElement>(null);
   const lineChartRef = React.useRef<HTMLCanvasElement>(null);
+  const { getSkeleton } = useSkeleton();
 
   const recentDonations = [
     {
@@ -174,6 +176,9 @@ export const DashboardContent = () => {
           }
         }
       });
+
+      // Hide loading after charts are rendered
+      setTimeout(() => setIsLoading(false), 500);
     }
   }, [chartsLoaded]);
 
@@ -189,6 +194,11 @@ export const DashboardContent = () => {
         return "bg-gray-100 text-gray-800";
     }
   };
+
+  // Show skeleton while loading
+  if (isLoading) {
+    return getSkeleton();
+  }
 
   return (
     <div className="flex-1 p-6 bg-gray-50 overflow-auto">
@@ -421,6 +431,9 @@ interface DashboardLayoutProps {
 
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const pathname = usePathname();
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const { getSkeleton } = useSkeleton();
   
   // Determine active page based on current pathname
   const getActivePage = () => {
@@ -442,9 +455,20 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     return 'Dashboard'; // default
   };
 
-  const handlePageChange = (path: string) => {
-    // Use Next.js router for navigation
-    window.location.href = `/${path}`;
+  const handlePageChange = async (path: string) => {
+    setIsLoading(true);
+    
+    // Use Next.js router for smooth navigation
+    try {
+      await router.push(`/${path}`);
+    } catch (error) {
+      console.error('Navigation error:', error);
+      // Fallback to window.location if router fails
+      window.location.href = `/${path}`;
+    } finally {
+      // Reset loading state after navigation
+      setTimeout(() => setIsLoading(false), 100);
+    }
   };
 
   return (
@@ -453,9 +477,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       <div className="flex flex-1 overflow-hidden">
         <Sidebar 
           activePage={getActivePage()}
-          onPageChange={handlePageChange} 
+          onPageChange={handlePageChange}
+          isLoading={isLoading}
         />
-        {children}
+        {isLoading ? getSkeleton() : children}
       </div>
     </div>
   );

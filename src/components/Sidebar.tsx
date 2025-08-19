@@ -1,18 +1,21 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Search, Home, Network, FileText, AlertTriangle, Upload, Users, BarChart3 } from 'lucide-react';
+import { Search, Home, Network, FileText, AlertTriangle, Upload, Users, BarChart3, Loader2 } from 'lucide-react';
 
 interface SidebarProps {
   activePage?: string;
   onPageChange?: (page: string) => void;
+  isLoading?: boolean;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ activePage = 'Dashboard', onPageChange }) => {
+const Sidebar: React.FC<SidebarProps> = ({ activePage = 'Dashboard', onPageChange, isLoading = false }) => {
   const [activeItem, setActiveItem] = useState(activePage);
+  const [clickedItem, setClickedItem] = useState<string | null>(null);
 
   // Update activeItem when activePage prop changes
   useEffect(() => {
     setActiveItem(activePage);
+    setClickedItem(null); // Reset clicked state when page changes
   }, [activePage]);
 
   const menuItems = [
@@ -25,10 +28,20 @@ const Sidebar: React.FC<SidebarProps> = ({ activePage = 'Dashboard', onPageChang
     { name: 'Reports', icon: BarChart3, path: 'reports' }
   ];
 
-  const handleItemClick = (itemName: string, path: string) => {
+  const handleItemClick = async (itemName: string, path: string) => {
+    if (isLoading) return; // Prevent multiple clicks while loading
+    
+    setClickedItem(itemName);
     setActiveItem(itemName);
+    
     if (onPageChange) {
-      onPageChange(path);
+      try {
+        await onPageChange(path);
+      } catch (error) {
+        console.error('Page change error:', error);
+        // Reset state on error
+        setClickedItem(null);
+      }
     }
   };
 
@@ -37,7 +50,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activePage = 'Dashboard', onPageChang
       <div className="flex-1 p-4">
         <div className="mb-6">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-2 text-gray-400 w-4 h-4" />
             <input
               type="text"
               placeholder="Quick Search"
@@ -50,18 +63,33 @@ const Sidebar: React.FC<SidebarProps> = ({ activePage = 'Dashboard', onPageChang
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = item.name === activeItem;
+            const isClicked = item.name === clickedItem;
+            const isDisabled = isLoading && isClicked;
+            
             return (
               <button
                 key={item.name}
                 onClick={() => handleItemClick(item.name, item.path)}
-                className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-colors ${
+                disabled={isLoading}
+                className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-all duration-200 ${
                   isActive
-                    ? 'text-blue-700 font-medium'
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
+                    ? 'text-blue-700 font-medium bg-blue-50 border border-blue-200'
+                    : isClicked && isLoading
+                    ? 'text-blue-600 bg-blue-50 border border-blue-200'
+                    : 'text-gray-700 hover:bg-gray-50 border border-transparent'
+                } ${isDisabled ? 'cursor-not-allowed opacity-75' : 'hover:shadow-sm'}`}
               >
-                <Icon className={`w-5 h-5 ${isActive ? 'text-blue-700' : 'text-gray-500'}`} />
+                {isClicked && isLoading ? (
+                  <Loader2 className="w-5 h-5 text-blue-600 animate-spin" />
+                ) : (
+                  <Icon className={`w-5 h-5 ${isActive ? 'text-blue-700' : 'text-gray-500'}`} />
+                )}
                 <span className="text-sm">{item.name}</span>
+                {isClicked && isLoading && (
+                  <div className="ml-auto">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
+                  </div>
+                )}
               </button>
             );
           })}
