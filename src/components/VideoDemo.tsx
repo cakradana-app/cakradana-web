@@ -98,7 +98,7 @@ export default function VideoDemo({ className = "" }: VideoDemoProps) {
         loop
         playsInline
       >
-        <source src="https://cdn.cargovision.app/video.mp4" type="video/mp4" />
+        <source src="https://cdn.cakradana.org/video.mp4" type="video/mp4" />
         <div className="flex items-center justify-center h-48 md:h-64 bg-gray-100 text-gray-500">
           <div className="text-center">
             <HiOutlineCollection className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 text-primary stroke-2" />

@@ -1,12 +1,15 @@
 'use client';
 import React from "react";
 import DashboardLayout, { DashboardContent } from "@/components/DashboardLayout";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 const DashboardPage = () => {
   return (
-    <DashboardLayout>
-      <DashboardContent />
-    </DashboardLayout>
+    <ProtectedRoute>
+      <DashboardLayout>
+        <DashboardContent />
+      </DashboardLayout>
+    </ProtectedRoute>
   );
 };
 
