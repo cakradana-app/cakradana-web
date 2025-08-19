@@ -106,12 +106,9 @@ const NetworkViewPage: React.FC = () => {
         .id(d => d.id)
         .distance(d => {
           // Dynamic distance based on node types and amounts
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const sourceNode = sampleNodes.find(n => n.id === (d.source as any).id || n.id === d.source);
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const targetNode = sampleNodes.find(n => n.id === (d.target as any).id || n.id === d.target);
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          if ((sourceNode as any)?.type === 'candidate' || (targetNode as any)?.type === 'candidate') {
+          const sourceNode = sampleNodes.find(n => n.id === (d.source as NetworkNode).id || n.id === d.source);
+          const targetNode = sampleNodes.find(n => n.id === (d.target as NetworkNode).id || n.id === d.target);
+          if (sourceNode?.type === 'candidate' || targetNode?.type === 'candidate') {
             return 180; // More space around candidates
           }
           return 140 + Math.log(d.amount / 1000000) * 8; // Increased base distance and scaling

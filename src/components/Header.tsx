@@ -1,8 +1,9 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Bell, User, Settings, LogOut } from 'lucide-react';
+import { getUserFromToken } from '@/lib/utils';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,6 +15,12 @@ import {
 
 const Header = () => {
   const [notificationCount, setNotificationCount] = useState(3);
+  const [userInfo, setUserInfo] = useState<{ name: string; type: string } | null>(null);
+
+  useEffect(() => {
+    const user = getUserFromToken();
+    setUserInfo(user);
+  }, []);
 
   const notifications = [
     {
@@ -131,8 +138,8 @@ const Header = () => {
                   <User className="w-4 h-4 text-gray-600" />
                 </div>
                 <div className="text-sm text-left">
-                  <div className="font-medium">Cakra Putra Dana</div>
-                  <div className="text-gray-500">KPU</div>
+                  <div className="font-medium">{userInfo?.name || 'User'}</div>
+                  <div className="text-gray-500">{userInfo?.type || 'User'}</div>
                 </div>
               </button>
             </DropdownMenuTrigger>

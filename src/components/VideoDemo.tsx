@@ -12,7 +12,7 @@ export default function VideoDemo({ className = "" }: VideoDemoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
-  const [isInView, setIsInView] = useState(false);
+
 
   useEffect(() => {
     const handleVideoLoad = () => {
@@ -73,7 +73,6 @@ export default function VideoDemo({ className = "" }: VideoDemoProps) {
       
       // Set audio volume based on visibility (0 = not visible, 1 = fully visible)
       if (visibilityRatio > 0.1) { // Start fading in when 10% visible
-        setIsInView(true);
         const targetVolume = Math.min(1, visibilityRatio);
         
         // Smooth volume transition
@@ -89,7 +88,6 @@ export default function VideoDemo({ className = "" }: VideoDemoProps) {
         }
       } else {
         // Fade out audio when not visible
-        setIsInView(false);
         gsap.to(videoElement, {
           volume: 0,
           duration: 0.3,

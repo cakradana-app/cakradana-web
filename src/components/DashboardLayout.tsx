@@ -16,7 +16,7 @@ declare global {
 // Export the existing dashboard page content for use in dashboard page
 export const DashboardContent = () => {
   const [chartsLoaded, setChartsLoaded] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const doughnutChartRef = React.useRef<HTMLCanvasElement>(null);
   const lineChartRef = React.useRef<HTMLCanvasElement>(null);
   const { getSkeleton } = useSkeleton();
@@ -65,16 +65,24 @@ export const DashboardContent = () => {
     script.onload = () => {
       setChartsLoaded(true);
     };
+    script.onerror = () => {
+      // If Chart.js fails to load, still show content
+      setChartsLoaded(false);
+      setIsLoading(false);
+    };
     document.head.appendChild(script);
 
     return () => {
-      document.head.removeChild(script);
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
     };
   }, []);
 
   React.useEffect(() => {
     if (chartsLoaded && doughnutChartRef.current && lineChartRef.current) {
-      const doughnutCtx = doughnutChartRef.current.getContext('2d');
+      try {
+        const doughnutCtx = doughnutChartRef.current.getContext('2d');
       new window.Chart(doughnutCtx, {
         type: 'doughnut',
         data: {
@@ -177,8 +185,15 @@ export const DashboardContent = () => {
         }
       });
 
-      // Hide loading after charts are rendered
-      setTimeout(() => setIsLoading(false), 500);
+              // Hide loading after charts are rendered
+        setTimeout(() => setIsLoading(false), 500);
+      } catch (error) {
+        console.error('Error rendering charts:', error);
+        setIsLoading(false);
+      }
+    } else if (!chartsLoaded) {
+      // If Chart.js is not loaded, don't show loading state
+      setIsLoading(false);
     }
   }, [chartsLoaded]);
 
@@ -195,8 +210,8 @@ export const DashboardContent = () => {
     }
   };
 
-  // Show skeleton while loading
-  if (isLoading) {
+  // Show skeleton only briefly while charts are loading
+  if (isLoading && chartsLoaded) {
     return getSkeleton();
   }
 
@@ -433,7 +448,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const pathname = usePathname();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const { getSkeleton } = useSkeleton();
+
   
   // Determine active page based on current pathname
   const getActivePage = () => {
@@ -471,6 +486,11 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     }
   };
 
+  // Reset loading state when pathname changes (navigation completes)
+  React.useEffect(() => {
+    setIsLoading(false);
+  }, [pathname]);
+
   return (
     <div className="flex flex-col h-screen bg-gray-50">
       <Header />
@@ -480,7 +500,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           onPageChange={handlePageChange}
           isLoading={isLoading}
         />
-        {isLoading ? getSkeleton() : children}
+        {children}
       </div>
     </div>
   );

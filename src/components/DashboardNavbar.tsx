@@ -90,7 +90,7 @@ export default function DashboardNavbar() {
                   <Button variant="ghost" className="flex items-center space-x-2 hover:bg-gray-100">
                     <User className="w-4 h-4" />
                     <span className="text-sm font-medium text-gray-700">
-                      {user?.email || 'User'}
+                      {user?.name || 'User'}
                     </span>
                     <ChevronDown className="w-4 h-4" />
                   </Button>
@@ -157,7 +157,8 @@ export default function DashboardNavbar() {
             {/* Mobile User Menu */}
             <div className="pt-4 border-t border-gray-200">
               <div className="px-3 py-2 text-sm text-gray-700">
-                <div className="font-medium">{user?.email || 'User'}</div>
+                <div className="font-medium">{user?.name || 'User'}</div>
+                <div className="text-gray-500">{user?.type || 'User'}</div>
               </div>
               <Link
                 href="/profile"

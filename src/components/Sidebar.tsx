@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Search, Home, Network, FileText, AlertTriangle, Upload, Users, BarChart3, Loader2 } from 'lucide-react';
+import { getUserFromToken } from '@/lib/utils';
 
 interface SidebarProps {
   activePage?: string;
@@ -11,12 +12,18 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ activePage = 'Dashboard', onPageChange, isLoading = false }) => {
   const [activeItem, setActiveItem] = useState(activePage);
   const [clickedItem, setClickedItem] = useState<string | null>(null);
+  const [userInfo, setUserInfo] = useState<{ name: string; type: string } | null>(null);
 
   // Update activeItem when activePage prop changes
   useEffect(() => {
     setActiveItem(activePage);
     setClickedItem(null); // Reset clicked state when page changes
   }, [activePage]);
+
+  useEffect(() => {
+    const user = getUserFromToken();
+    setUserInfo(user);
+  }, []);
 
   const menuItems = [
     { name: 'Dashboard', icon: Home, path: 'dashboard' },
@@ -99,11 +106,13 @@ const Sidebar: React.FC<SidebarProps> = ({ activePage = 'Dashboard', onPageChang
       <div className="p-4 border-t border-gray-200">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center">
-            <span className="text-xs font-semibold text-white">CD</span>
+            <span className="text-xs font-semibold text-white">
+              {userInfo?.name ? userInfo.name.substring(0, 2).toUpperCase() : 'U'}
+            </span>
           </div>
           <div className="text-sm">
-            <div className="font-medium">Cakra Putra Dana</div>
-            <div>KPU</div>
+            <div className="font-medium">{userInfo?.name || 'User'}</div>
+            <div>{userInfo?.type || 'User'}</div>
           </div>
         </div>
       </div>

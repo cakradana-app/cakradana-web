@@ -3,9 +3,13 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import authService, { LoginRequest, RegisterRequest, ForgotPasswordRequest, ChangePasswordRequest } from './auth-service';
+import { getUserFromToken } from './utils';
 
 interface User {
   email: string;
+  name: string;
+  type: string;
+  id: string;
 }
 
 interface AuthContextType {
@@ -50,8 +54,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const isAuth = authService.isAuthenticated();
       const userEmail = authService.getCurrentUserEmail();
       
+      if (isAuth && userEmail) {
+        // Get full user info from JWT token
+        const userInfo = getUserFromToken();
+        if (userInfo) {
+          setUser({
+            email: userEmail,
+            name: userInfo.name,
+            type: userInfo.type,
+            id: userInfo.id
+          });
+        } else {
+          setUser({ email: userEmail, name: 'User', type: 'User', id: '' });
+        }
+      } else {
+        setUser(null);
+      }
+      
       setIsAuthenticated(isAuth);
-      setUser(userEmail ? { email: userEmail } : null);
     } catch (error) {
       console.error('Error checking auth status:', error);
       setIsAuthenticated(false);
@@ -67,7 +87,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const response = await authService.login(credentials);
       
       if (response.status === 'success') {
-        setUser({ email: response.data.email });
+        // Get full user info from JWT token after login
+        const userInfo = getUserFromToken();
+        if (userInfo) {
+          setUser({
+            email: response.data.email,
+            name: userInfo.name,
+            type: userInfo.type,
+            id: userInfo.id
+          });
+        } else {
+          setUser({ email: response.data.email, name: 'User', type: 'User', id: '' });
+        }
         setIsAuthenticated(true);
         router.push('/dashboard');
       } else {
@@ -87,7 +118,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const response = await authService.register(userData);
       
       if (response.status === 'success') {
-        setUser({ email: response.data.email });
+        setUser({ email: response.data.email, name: 'User', type: 'User', id: '' });
         setIsAuthenticated(true);
         router.push('/dashboard');
       } else {
