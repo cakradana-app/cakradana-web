@@ -14,7 +14,7 @@ import PublicRoute from '@/components/PublicRoute';
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
-  const [email, setEmail] = useState('dev@cakradana.org');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('testtest');
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);

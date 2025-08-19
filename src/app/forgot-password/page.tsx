@@ -10,7 +10,7 @@ import { useAuth } from '@/lib/auth-context';
 import PublicRoute from '@/components/PublicRoute';
 
 export default function ForgotPasswordPage() {
-  const [email, setEmail] = useState('dev@cakradana.org');
+  const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
