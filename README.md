@@ -1,36 +1,166 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏛️ Cakradana Web
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+![Cakradana Logo](public/logo-warna.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+> **Empowering Clean & Transparent Elections with AI-Powered AML Detection**
+
+[![Next.js](https://img.shields.io/badge/Next.js-15.4.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18.3.1-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+
+</div>
+
+Cakradana is an innovative web application that enhances election financing transparency by monitoring donations from individuals, corporations, and political parties in real-time, detecting money laundering with AI, and providing comprehensive donation network visualization.
+
+## 🌟 What is Cakradana?
+
+Cakradana is a comprehensive election campaign finance monitoring platform designed to ensure transparency and integrity in political funding. The platform leverages artificial intelligence to detect suspicious donation patterns and provides real-time monitoring of campaign contributions.
+
+### Key Features
+
+- 🔍 **Real-Time Donation Monitoring** - Track every campaign donation flow instantly from various sources
+- 📊 **Interactive Analytics Dashboard** - Visualize donor-recipient relationships and generate comprehensive campaign financial reports
+- 🤖 **AI-Powered Anomaly Detection** - Identify suspicious donation patterns like smurfing or illegal transactions using advanced machine learning algorithms
+- 🔗 **Multi-Source Data Integration** - Support for paper donation forms (OCR), digital forms, and web scraping for anomaly detection
+- ✅ **Donation Verification & Confirmation** - Candidates/recipients can confirm or report suspicious transactions through dedicated dashboards
+
+## 🚀 What does cakradana-web do?
+
+The `cakradana-web` repository contains the frontend web application that provides:
+
+### Public Features
+- **Landing Page** - Showcases Cakradana's capabilities and features
+- **User Authentication** - Secure login, registration, and password management
+- **Feature Demonstrations** - Interactive showcases of AI detection and analytics
+
+### Dashboard Features (Protected)
+- **Real-time Donation Tracking** - Monitor incoming donations with risk assessment
+- **Analytics & Reporting** - Interactive charts and financial reports
+- **Risk Analysis** - AI-powered suspicious transaction detection
+- **Network Visualization** - Donor-recipient relationship mapping
+- **Document Upload** - Support for paper and digital donation forms
+- **User Management** - Role-based access control for different user types
+
+### User Types Supported
+- 🏠 **Individual** - Personal donors
+- 🏢 **Corporation** - Corporate donors
+- 🏛️ **Organization** - Non-profit organizations
+- 🎯 **Political Party** - Political party representatives
+- 🏛️ **Government** - Government entities
+- 📋 **Other** - Other donor types
+
+## 🛠️ Tech Stack
+
+### Frontend Framework
+- **[Next.js 15.4.2](https://nextjs.org/)** - React framework with App Router
+- **[React 18.3.1](https://reactjs.org/)** - UI library
+- **[TypeScript 5.0](https://www.typescriptlang.org/)** - Type safety
+
+### Styling & UI
+- **[Tailwind CSS 3.4.17](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Radix UI](https://www.radix-ui.com/)** - Accessible UI primitives
+- **[Lucide React](https://lucide.dev/)** - Beautiful icons
+- **[React Icons](https://react-icons.github.io/react-icons/)** - Icon library
+- **[GSAP](https://greensock.com/gsap/)** - Advanced animations
+
+### Forms & Validation
+- **[React Hook Form](https://react-hook-form.com/)** - Performant forms
+- **[Yup](https://github.com/jquense/yup)** - Schema validation
+- **[@hookform/resolvers](https://github.com/react-hook-form/resolvers)** - Form validation resolvers
+
+### Data Visualization
+- **[Chart.js](https://www.chartjs.org/)** - Interactive charts
+- **[D3.js](https://d3js.org/)** - Data visualization library
+- **[Recharts](https://recharts.org/)** - React chart library
+
+### Development Tools
+- **[ESLint](https://eslint.org/)** - Code linting
+- **[PostCSS](https://postcss.org/)** - CSS processing
+- **[Autoprefixer](https://autoprefixer.github.io/)** - CSS vendor prefixes
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── dashboard/         # Protected dashboard pages
+│   ├── login/            # Authentication pages
+│   ├── signup/           # Registration pages
+│   └── layout.tsx        # Root layout
+├── components/           # Reusable React components
+│   ├── ui/              # Base UI components
+│   ├── DashboardLayout.tsx
+│   ├── ProtectedRoute.tsx
+│   └── PublicRoute.tsx
+├── lib/                 # Utility functions and hooks
+│   ├── auth-context.tsx # Authentication context
+│   ├── auth-service.ts  # API service layer
+│   └── utils.ts         # Helper functions
+└── public/              # Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Installation
 
-## Learn More
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/cakradana-app/cakradana-web.git
+   cd cakradana-web
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-## Deploy on Vercel
+### Available Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔗 Related Links
+
+- **🌐 Website**: [https://cakradana.org](https://cakradana.org)
+- **📚 API Documentation**: [https://api.cakradana.org](https://api.cakradana.org)
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our contributing guidelines for more details.
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 🙏 Acknowledgments
+
+- Built with ❤️ for transparent and fair elections
+- Powered by advanced AI and machine learning technologies
+- Designed for the Indonesian electoral system
+
+---
+
+**Cakradana** - Empowering democracy through transparency and technology.
