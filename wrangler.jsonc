@@ -1,0 +1,24 @@
+{
+  "r2_buckets": [
+    {
+      "bucket_name": "cakradana-web-inc-cache",
+      "binding": "NEXT_INC_CACHE_R2_BUCKET"
+    }
+  ],
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "cakradana-web",
+  "compatibility_date": "2025-10-25",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "vars": {
+    "NEXT_PUBLIC_UMAMI_ID": "761c60f7-71a2-4681-8da2-cb30d7754a32",
+    "NEXT_PUBLIC_UMAMI_DOMAINS": "cakradana.org"
+  }
+}
