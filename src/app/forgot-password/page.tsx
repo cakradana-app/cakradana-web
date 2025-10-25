@@ -40,7 +40,7 @@ export default function ForgotPasswordPage() {
           {/* Left Side - Background Image */}
           <div className="hidden lg:flex lg:w-1/2 relative lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-hidden">
             <Image
-              src="/features/auth.png"
+              src="/features/Auth.png"
               alt="Financial Intelligence Platform"
               fill
               className="object-cover"
@@ -123,7 +123,7 @@ export default function ForgotPasswordPage() {
         {/* Left Side - Background Image */}
         <div className="hidden lg:flex lg:w-1/2 relative lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-hidden">
           <Image
-            src="/features/auth.png"
+            src="/features/Auth.png"
             alt="Financial Intelligence Platform"
             fill
             className="object-cover"
