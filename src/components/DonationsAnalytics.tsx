@@ -108,6 +108,18 @@ const topRecipientsData = [
   { rank: 3, name: 'Anies Baswedan', totalAmount: 396405204, donations: 1 }
 ];
 
+type PieLabelParams = {
+  name?: string;
+  percent?: number | string | null;
+};
+
+const formatPieLabel = ({ name, percent }: PieLabelParams) => {
+  const numericPercent =
+    typeof percent === 'number' ? percent : Number(percent ?? 0);
+  const safePercent = Number.isFinite(numericPercent) ? numericPercent : 0;
+  return `${name ?? ''} ${(safePercent * 100).toFixed(0)}%`;
+};
+
 const DonationsAnalytics = ({ donations }: DonationsAnalyticsProps) => {
   const [chartType, setChartType] = useState<'amount' | 'count'>('amount');
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -249,7 +261,7 @@ const DonationsAnalytics = ({ donations }: DonationsAnalyticsProps) => {
                   outerRadius={80}
                   fill="#8884d8"
                   dataKey="value"
-                  label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
+                  label={formatPieLabel}
                 >
                   {mockupData.statusData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
@@ -290,7 +302,7 @@ const DonationsAnalytics = ({ donations }: DonationsAnalyticsProps) => {
                   outerRadius={80}
                   fill="#8884d8"
                   dataKey="value"
-                  label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
+                  label={formatPieLabel}
                 >
                   {mockupData.sourceData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
@@ -315,7 +327,7 @@ const DonationsAnalytics = ({ donations }: DonationsAnalyticsProps) => {
                   outerRadius={80}
                   fill="#8884d8"
                   dataKey="value"
-                  label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
+                  label={formatPieLabel}
                 >
                   {mockupData.donorTypeData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />

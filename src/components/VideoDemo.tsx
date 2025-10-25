@@ -192,7 +192,6 @@ export default function VideoDemo({ className = "" }: VideoDemoProps) {
         autoPlay
         loop
         playsInline
-        muted // Start muted
       >
         <source src="https://cdn.cakradana.org/video.mp4" type="video/mp4" />
         <div className="flex items-center justify-center h-48 md:h-64 bg-gray-100 text-gray-500">
