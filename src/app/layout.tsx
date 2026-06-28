@@ -5,7 +5,6 @@ import ConditionalNavbar from "@/components/ConditionalNavbar";
 import DomainRedirect from "@/components/DomainRedirect";
 import { LoadingProvider } from "@/lib/loading-context";
 import { AuthProvider } from "@/lib/auth-context";
-import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -144,11 +143,12 @@ export default function RootLayout({
         />
 
         <title>{typeof metadata.title === "string" ? metadata.title : ""}</title>
-        <Script
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script
+          defer
           src="https://stat.faizath.com/script.js"
           data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID}
           data-domains={process.env.NEXT_PUBLIC_UMAMI_DOMAINS}
-          strategy="afterInteractive"
         />
       </head>
       <body
