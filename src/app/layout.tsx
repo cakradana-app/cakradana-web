@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ConditionalNavbar from "@/components/ConditionalNavbar";
+import DomainRedirect from "@/components/DomainRedirect";
 import { LoadingProvider } from "@/lib/loading-context";
 import { AuthProvider } from "@/lib/auth-context";
 import Script from "next/script";
@@ -153,6 +154,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <DomainRedirect />
         <LoadingProvider>
           <AuthProvider>
             <ConditionalNavbar />
