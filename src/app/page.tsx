@@ -6,10 +6,12 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import PricingSection from '@/components/PricingSection';
 import FAQSection from '@/components/FAQSection';
 import Footer from '@/components/Footer';
+import DomainMigrationPopup from '@/components/DomainMigrationPopup';
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <DomainMigrationPopup />
       <HeroSection />
       <FeaturesSection />
       <HowItWorksSection />
