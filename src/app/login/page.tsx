@@ -47,7 +47,7 @@ export default function LoginPage() {
         {/* Left Side - Background Image */}
         <div className="hidden lg:flex lg:w-1/2 relative lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-hidden">
           <Image
-            src="/features/Auth.png"
+            src="/features/dashboard-preview.png"
             alt="Financial Intelligence Platform"
             fill
             className="object-cover"

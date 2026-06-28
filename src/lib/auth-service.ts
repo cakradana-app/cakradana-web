@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://api.cakradana.org';
+const API_BASE_URL = `https://${process.env.NEXT_PUBLIC_API_HOST ?? 'cakradana-api.faizath.com'}`;
 
 export interface LoginRequest {
   email: string;

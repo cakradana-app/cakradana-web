@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     title: "Cakradana | Transparansi Pembiayaan Pemilu di Indonesia",
     description:
       "Aplikasi web AI-powered untuk memantau donasi pemilu, mendeteksi pencucian uang, dan menyediakan visualisasi jaringan untuk KPU dan PPATK.",
-    url: "https://cakradana.com",
+    url: "https://cakradana.faizath.com",
     images: [
       {
-        url: "https://cakradana.com/og-image.jpg",
+        url: "https://cakradana.faizath.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Cakradana Dashboard Preview",
@@ -111,7 +111,7 @@ export default function RootLayout({
             Array.isArray(metadata.openGraph?.images) &&
             metadata.openGraph?.images.length > 0
               ? (metadata.openGraph.images[0] as { url?: string })?.url || String(metadata.openGraph.images[0])
-              : "https://cakradana.com/og-image.jpg"
+              : "https://cakradana.faizath.com/og-image.png"
           }
         />
         <meta

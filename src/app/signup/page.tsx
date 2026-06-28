@@ -21,7 +21,7 @@ export default function SignupPage() {
   
   const [formData, setFormData] = useState({
     name: 'Parpol B',
-    email: 'parpol@cakradana.org',
+    email: 'parpol@cakradana.faizath.com',
     password: 'testtest',
     confirmPassword: 'testtest',
     type: 'political-party'
@@ -89,7 +89,7 @@ export default function SignupPage() {
         {/* Left Side - Background Image */}
         <div className="hidden lg:flex lg:w-1/2 relative lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-hidden">
           <Image
-            src="/features/Auth.png"
+            src="/features/dashboard-preview.png"
             alt="Financial Intelligence Platform"
             fill
             className="object-cover"
