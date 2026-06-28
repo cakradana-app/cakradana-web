@@ -19,6 +19,9 @@
   },
   "vars": {
     "NEXT_PUBLIC_UMAMI_ID": "761c60f7-71a2-4681-8da2-cb30d7754a32",
-    "NEXT_PUBLIC_UMAMI_DOMAINS": "cakradana.org"
-  }
+    "NEXT_PUBLIC_UMAMI_DOMAINS": "cakradana.faizath.com",
+    "NEXT_PUBLIC_API_HOST": "cakradana-api.faizath.com",
+    "NEXT_PUBLIC_BASE_DOMAIN": "cakradana.faizath.com"
+  },
+  "account_id": "f2cdaf279c42566bdbbda586d9ac0812"
 }
