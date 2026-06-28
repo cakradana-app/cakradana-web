@@ -159,8 +159,8 @@ src/
 
 ## 🔗 Related Links
 
-- **🌐 Website**: [https://cakradana.org](https://cakradana.org)
-- **📚 API Documentation**: [https://api.cakradana.org](https://api.cakradana.org)
+- **🌐 Website**: [https://cakradana.faizath.com](https://cakradana.faizath.com)
+- **📚 API Documentation**: [https://cakradana-api.faizath.com](https://cakradana-api.faizath.com)
 
 ## 🤝 Contributing
 
